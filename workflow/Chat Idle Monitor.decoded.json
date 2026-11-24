@@ -1,0 +1,4259 @@
+{
+  "nextTrackingNumber": 36,
+  "defaultLanguage": "en-US",
+  "description": "Alerts the agent script when a chat/messaging interaction has had no agent reply for State.ThresholdMinutes. Started per interaction by a trigger on v2.detail.events.conversation.{id}.user.start.",
+  "initialSequence": "46f984f1-c7ae-4e0b-b602-5ae00ea92960",
+  "name": "Chat Idle Monitor",
+  "uiMetaData": {
+    "bridgeServerActions": [],
+    "screenPops": [],
+    "actionServiceActions": [
+      {
+        "id": "custom_-_fa008035-76d5-4403-b92e-8ab226c90438",
+        "name": "GC - Get Message Conversation Activity",
+        "category": "Genesys Cloud Data Actions",
+        "contract": {
+          "input": {
+            "inputSchemaFlattened": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conversationId": {
+                    "type": "string",
+                    "name": "conversationId",
+                    "required": false
+                  }
+                }
+              }
+            }
+          },
+          "output": {
+            "successSchemaFlattened": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customerParticipantIds": {
+                    "type": "array",
+                    "name": "customerParticipantIds",
+                    "required": false
+                  },
+                  "customerMessageTimes": {
+                    "type": "array",
+                    "name": "customerMessageTimes",
+                    "required": false
+                  },
+                  "agentMessageTimes": {
+                    "type": "array",
+                    "name": "agentMessageTimes",
+                    "required": false
+                  },
+                  "connectedAgentUserIds": {
+                    "type": "array",
+                    "name": "connectedAgentUserIds",
+                    "required": false
+                  },
+                  "connectedAgentTimes": {
+                    "type": "array",
+                    "name": "connectedAgentTimes",
+                    "required": false
+                  },
+                  "alertingAgentUserIds": {
+                    "type": "array",
+                    "name": "alertingAgentUserIds",
+                    "required": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "conversationId": {
+              "type": "string",
+              "name": "conversationId",
+              "required": false
+            }
+          }
+        },
+        "successSchema": {
+          "type": "object",
+          "properties": {
+            "customerParticipantIds": {
+              "type": "array",
+              "name": "customerParticipantIds",
+              "required": false
+            },
+            "customerMessageTimes": {
+              "type": "array",
+              "name": "customerMessageTimes",
+              "required": false
+            },
+            "agentMessageTimes": {
+              "type": "array",
+              "name": "agentMessageTimes",
+              "required": false
+            },
+            "connectedAgentUserIds": {
+              "type": "array",
+              "name": "connectedAgentUserIds",
+              "required": false
+            },
+            "connectedAgentTimes": {
+              "type": "array",
+              "name": "connectedAgentTimes",
+              "required": false
+            },
+            "alertingAgentUserIds": {
+              "type": "array",
+              "name": "alertingAgentUserIds",
+              "required": false
+            }
+          }
+        }
+      },
+      {
+        "id": "custom_-_62354c94-4244-4763-8e06-8614c2ecf56e",
+        "name": "GC - Set Idle Alert Attributes",
+        "category": "Genesys Cloud Data Actions",
+        "contract": {
+          "input": {
+            "inputSchemaFlattened": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conversationId": {
+                    "type": "string",
+                    "name": "conversationId",
+                    "required": false
+                  },
+                  "participantId": {
+                    "type": "string",
+                    "name": "participantId",
+                    "required": false
+                  },
+                  "idleAlert": {
+                    "type": "string",
+                    "name": "idleAlert",
+                    "required": false
+                  },
+                  "idleMinutes": {
+                    "type": "string",
+                    "name": "idleMinutes",
+                    "required": false
+                  },
+                  "idleSeq": {
+                    "type": "string",
+                    "name": "idleSeq",
+                    "required": false
+                  }
+                }
+              }
+            }
+          },
+          "output": {
+            "successSchemaFlattened": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "name": "status",
+                    "required": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "conversationId": {
+              "type": "string",
+              "name": "conversationId",
+              "required": false
+            },
+            "participantId": {
+              "type": "string",
+              "name": "participantId",
+              "required": false
+            },
+            "idleAlert": {
+              "type": "string",
+              "name": "idleAlert",
+              "required": false
+            },
+            "idleMinutes": {
+              "type": "string",
+              "name": "idleMinutes",
+              "required": false
+            },
+            "idleSeq": {
+              "type": "string",
+              "name": "idleSeq",
+              "required": false
+            }
+          }
+        },
+        "successSchema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "name": "status",
+              "required": false
+            }
+          }
+        }
+      }
+    ]
+  },
+  "supportedLanguages": [
+    "en-US"
+  ],
+  "manifest": {
+    "dataAction": [
+      {
+        "name": "GC - Get Message Conversation Activity",
+        "id": "custom_-_fa008035-76d5-4403-b92e-8ab226c90438",
+        "context": [
+          {
+            "actionName": "DataAction",
+            "id": "e43b4e77-d729-45bc-be1b-06c5783c43b6",
+            "name": "Get conversation activity"
+          }
+        ]
+      },
+      {
+        "name": "GC - Set Idle Alert Attributes",
+        "id": "custom_-_62354c94-4244-4763-8e06-8614c2ecf56e",
+        "context": [
+          {
+            "actionName": "DataAction",
+            "id": "2d68a309-42e6-47c6-b600-e4e62dd5f888",
+            "name": "Set IdleAlert = 1"
+          },
+          {
+            "actionName": "DataAction",
+            "id": "036868ca-9f5c-441b-b7e5-f400bc5aab21",
+            "name": "Set IdleAlert = 0"
+          }
+        ]
+      }
+    ],
+    "language": [
+      {
+        "id": "en-US"
+      }
+    ],
+    "userPrompt": [],
+    "systemPrompt": []
+  },
+  "type": "workflow",
+  "debugSettings": {},
+  "errorHandling": {
+    "handlingType": "EndWorkflow"
+  },
+  "customDefinitions": {
+    "dataTypeDefinitions": []
+  },
+  "defaultSettings": {},
+  "flowMetaData": {
+    "flowDocumentVersion": "1.0",
+    "minimumServerVersion": "1.0",
+    "features": []
+  },
+  "flowSequenceItemList": [
+    {
+      "startAction": "f82bc1c8-54e4-4ae8-a730-47376ce21bd1",
+      "trackingId": 10,
+      "id": "46f984f1-c7ae-4e0b-b602-5ae00ea92960",
+      "name": "Initial State",
+      "uiMetaData": {
+        "collapsed": false
+      },
+      "__type": "State",
+      "actionList": [
+        {
+          "trackingId": 11,
+          "id": "56e74514-b9e5-4618-a2bb-0ff32fbb2192",
+          "name": "Wait 1 minute",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "WaitAction",
+          "duration": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "P0D0H1M0S0F",
+                "type": "dur"
+              }
+            },
+            "text": "P0D0H1M0S0F",
+            "type": "dur",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          },
+          "trimDurationNearMaxRunningTime": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "false",
+                "type": "bln"
+              }
+            },
+            "text": "false",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          },
+          "nextAction": "e43b4e77-d729-45bc-be1b-06c5783c43b6"
+        },
+        {
+          "trackingId": 12,
+          "id": "e43b4e77-d729-45bc-be1b-06c5783c43b6",
+          "name": "Get conversation activity",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DataAction",
+          "actionName": "GC - Get Message Conversation Activity",
+          "actionId": "custom_-_fa008035-76d5-4403-b92e-8ab226c90438",
+          "category": {
+            "id": "",
+            "name": "Genesys Cloud Data Actions"
+          },
+          "useSuggestedTimeout": true,
+          "errorBindings": [],
+          "inputs": [
+            {
+              "name": "conversationId",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "Flow.conversationId",
+                    "type": "str",
+                    "val": "c3bb3e87-1c61-4ea6-9d38-e1a9a5a350af"
+                  }
+                },
+                "text": "Flow.conversationId",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "c3bb3e87-1c61-4ea6-9d38-e1a9a5a350af",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "Flow.conversationId"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "name": "customerParticipantIds",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.customerParticipantIds",
+                    "type": "str_coll",
+                    "val": "88c4baa8-b87c-4827-8887-be07583149db"
+                  }
+                },
+                "text": "State.customerParticipantIds",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "88c4baa8-b87c-4827-8887-be07583149db",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.customerParticipantIds"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "customerMessageTimes",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.customerMessageTimes",
+                    "type": "str_coll",
+                    "val": "654a92aa-f83d-4e50-ae5d-11582f6dacf9"
+                  }
+                },
+                "text": "State.customerMessageTimes",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "654a92aa-f83d-4e50-ae5d-11582f6dacf9",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.customerMessageTimes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "agentMessageTimes",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.agentMessageTimes",
+                    "type": "str_coll",
+                    "val": "8fda8881-90f6-4eea-890e-6f04b4294fcf"
+                  }
+                },
+                "text": "State.agentMessageTimes",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "8fda8881-90f6-4eea-890e-6f04b4294fcf",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.agentMessageTimes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "connectedAgentUserIds",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.connectedAgentUserIds",
+                    "type": "str_coll",
+                    "val": "45075446-76a8-4726-907b-71c5acc76837"
+                  }
+                },
+                "text": "State.connectedAgentUserIds",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "45075446-76a8-4726-907b-71c5acc76837",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.connectedAgentUserIds"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "connectedAgentTimes",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.connectedAgentTimes",
+                    "type": "str_coll",
+                    "val": "158148a2-1628-40f7-82c6-51c4ae91f6af"
+                  }
+                },
+                "text": "State.connectedAgentTimes",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "158148a2-1628-40f7-82c6-51c4ae91f6af",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.connectedAgentTimes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "alertingAgentUserIds",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.alertingAgentUserIds",
+                    "type": "str_coll",
+                    "val": "a774473a-0964-405d-a9e5-f35a3e377e6d"
+                  }
+                },
+                "text": "State.alertingAgentUserIds",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "a774473a-0964-405d-a9e5-f35a3e377e6d",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.alertingAgentUserIds"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "timeout": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "P0D0H0M20S0F",
+                "type": "dur"
+              }
+            },
+            "text": "P0D0H0M20S0F",
+            "type": "dur",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Success",
+              "outputId": "__SUCCESS__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "336e6b44-525b-4f5b-8882-3694ddf78590"
+            },
+            {
+              "label": "Failure",
+              "outputId": "__FAILURE__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "e1dc9cc7-c0c3-4cd0-8b6f-bf4a7b7226dc"
+            },
+            {
+              "label": "Timeout",
+              "outputId": "__TIMEOUT__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "e37c7385-a160-438c-9f08-0c29e6777a82"
+            }
+          ]
+        },
+        {
+          "trackingId": 13,
+          "id": "336e6b44-525b-4f5b-8882-3694ddf78590",
+          "name": "Find our agent",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "UpdateVariableAction",
+          "variables": [
+            {
+              "expression": {
+                "config": {
+                  "FindFirst": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 11,
+                          "text": "State.connectedAgentUserIds",
+                          "type": "str_coll",
+                          "val": "45075446-76a8-4726-907b-71c5acc76837"
+                        }
+                      },
+                      {
+                        "ref": {
+                          "pos": 40,
+                          "text": "Flow.userId",
+                          "type": "str",
+                          "val": "62ee0362-7afb-40ba-9f25-2051baee4dd5"
+                        }
+                      }
+                    ],
+                    "type": "int",
+                    "text": "FindFirst(State.connectedAgentUserIds, Flow.userId)"
+                  }
+                },
+                "text": "FindFirst(State.connectedAgentUserIds, Flow.userId)",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "45075446-76a8-4726-907b-71c5acc76837",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.connectedAgentUserIds"
+                    },
+                    {
+                      "id": "62ee0362-7afb-40ba-9f25-2051baee4dd5",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "Flow.userId"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.AgentIndex",
+                    "type": "int",
+                    "val": "d8abe6e0-173c-4900-8d61-8d7c31398a64"
+                  }
+                },
+                "text": "State.AgentIndex",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "d8abe6e0-173c-4900-8d61-8d7c31398a64",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.AgentIndex"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "nextAction": "140af693-805f-41e5-ad3f-90bdf2740053"
+        },
+        {
+          "trackingId": 14,
+          "id": "ae2f0013-d32d-4549-81e7-a18c247df1c6",
+          "name": "Still ringing - check again",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "NextLoopAction"
+        },
+        {
+          "trackingId": 15,
+          "id": "a3bb255e-c27a-4ed9-905d-30e95ebffa84",
+          "name": "Agent left the conversation",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "ExitLoopAction"
+        },
+        {
+          "trackingId": 16,
+          "id": "e82e6dad-96c6-418c-be03-b1379dfd3666",
+          "name": "Still alerting?",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DecisionAction",
+          "expression": {
+            "config": {
+              ">=": {
+                "pos": 52,
+                "operands": [
+                  {
+                    "FindFirst": {
+                      "pos": 1,
+                      "operands": [
+                        {
+                          "ref": {
+                            "pos": 11,
+                            "text": "State.alertingAgentUserIds",
+                            "type": "str_coll",
+                            "val": "a774473a-0964-405d-a9e5-f35a3e377e6d"
+                          }
+                        },
+                        {
+                          "ref": {
+                            "pos": 39,
+                            "text": "Flow.userId",
+                            "type": "str",
+                            "val": "62ee0362-7afb-40ba-9f25-2051baee4dd5"
+                          }
+                        }
+                      ],
+                      "type": "int"
+                    }
+                  },
+                  {
+                    "lit": {
+                      "pos": 55,
+                      "text": "0",
+                      "type": "int"
+                    }
+                  }
+                ],
+                "type": "bln",
+                "text": "FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0"
+              }
+            },
+            "text": "FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "a774473a-0964-405d-a9e5-f35a3e377e6d",
+                  "type": "str_coll",
+                  "isSysRef": false,
+                  "name": "State.alertingAgentUserIds"
+                },
+                {
+                  "id": "62ee0362-7afb-40ba-9f25-2051baee4dd5",
+                  "type": "str",
+                  "isSysRef": false,
+                  "name": "Flow.userId"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Yes",
+              "outputId": "__YES__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "ae2f0013-d32d-4549-81e7-a18c247df1c6"
+            },
+            {
+              "label": "No",
+              "outputId": "__NO__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "a3bb255e-c27a-4ed9-905d-30e95ebffa84"
+            }
+          ]
+        },
+        {
+          "trackingId": 17,
+          "id": "fc6e0811-bce1-4f1b-b637-01330233d307",
+          "name": "Compute idle time",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "UpdateVariableAction",
+          "variables": [
+            {
+              "expression": {
+                "config": {
+                  "ToDateTime": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "[": {
+                          "pos": 37,
+                          "operands": [
+                            {
+                              "ref": {
+                                "pos": 12,
+                                "text": "State.connectedAgentTimes",
+                                "type": "str_coll",
+                                "val": "158148a2-1628-40f7-82c6-51c4ae91f6af"
+                              }
+                            },
+                            {
+                              "ref": {
+                                "pos": 38,
+                                "text": "State.AgentIndex",
+                                "type": "int",
+                                "val": "d8abe6e0-173c-4900-8d61-8d7c31398a64"
+                              }
+                            }
+                          ],
+                          "type": "str"
+                        }
+                      }
+                    ],
+                    "type": "dtm",
+                    "text": "ToDateTime(State.connectedAgentTimes[State.AgentIndex])"
+                  }
+                },
+                "text": "ToDateTime(State.connectedAgentTimes[State.AgentIndex])",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "158148a2-1628-40f7-82c6-51c4ae91f6af",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.connectedAgentTimes"
+                    },
+                    {
+                      "id": "d8abe6e0-173c-4900-8d61-8d7c31398a64",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.AgentIndex"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.AgentConnectedTime",
+                    "type": "dtm",
+                    "val": "67de18e8-93ba-4bcb-b857-eaefb020c830"
+                  }
+                },
+                "text": "State.AgentConnectedTime",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "67de18e8-93ba-4bcb-b857-eaefb020c830",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.AgentConnectedTime"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  ">": {
+                    "pos": 32,
+                    "operands": [
+                      {
+                        "Count": {
+                          "pos": 1,
+                          "operands": [
+                            {
+                              "ref": {
+                                "pos": 7,
+                                "text": "State.agentMessageTimes",
+                                "type": "str_coll",
+                                "val": "8fda8881-90f6-4eea-890e-6f04b4294fcf"
+                              }
+                            }
+                          ],
+                          "type": "int"
+                        }
+                      },
+                      {
+                        "lit": {
+                          "pos": 34,
+                          "text": "0",
+                          "type": "int"
+                        }
+                      }
+                    ],
+                    "type": "bln",
+                    "text": "Count(State.agentMessageTimes) > 0"
+                  }
+                },
+                "text": "Count(State.agentMessageTimes) > 0",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "8fda8881-90f6-4eea-890e-6f04b4294fcf",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.agentMessageTimes"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.HasAgentMsg",
+                    "type": "bln",
+                    "val": "d2deda82-becb-40f4-9951-06fd2cb69ca7"
+                  }
+                },
+                "text": "State.HasAgentMsg",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "d2deda82-becb-40f4-9951-06fd2cb69ca7",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.HasAgentMsg"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  ">": {
+                    "pos": 35,
+                    "operands": [
+                      {
+                        "Count": {
+                          "pos": 1,
+                          "operands": [
+                            {
+                              "ref": {
+                                "pos": 7,
+                                "text": "State.customerMessageTimes",
+                                "type": "str_coll",
+                                "val": "654a92aa-f83d-4e50-ae5d-11582f6dacf9"
+                              }
+                            }
+                          ],
+                          "type": "int"
+                        }
+                      },
+                      {
+                        "lit": {
+                          "pos": 37,
+                          "text": "0",
+                          "type": "int"
+                        }
+                      }
+                    ],
+                    "type": "bln",
+                    "text": "Count(State.customerMessageTimes) > 0"
+                  }
+                },
+                "text": "Count(State.customerMessageTimes) > 0",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "654a92aa-f83d-4e50-ae5d-11582f6dacf9",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.customerMessageTimes"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.HasCustomerMsg",
+                    "type": "bln",
+                    "val": "0e4e43ed-b110-4dd5-83e9-15e21b55c1cf"
+                  }
+                },
+                "text": "State.HasCustomerMsg",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "0e4e43ed-b110-4dd5-83e9-15e21b55c1cf",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.HasCustomerMsg"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "If": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 4,
+                          "text": "State.HasAgentMsg",
+                          "type": "bln",
+                          "val": "d2deda82-becb-40f4-9951-06fd2cb69ca7"
+                        }
+                      },
+                      {
+                        "ToDateTime": {
+                          "pos": 23,
+                          "operands": [
+                            {
+                              "[": {
+                                "pos": 57,
+                                "operands": [
+                                  {
+                                    "ref": {
+                                      "pos": 34,
+                                      "text": "State.agentMessageTimes",
+                                      "type": "str_coll",
+                                      "val": "8fda8881-90f6-4eea-890e-6f04b4294fcf"
+                                    }
+                                  },
+                                  {
+                                    "-": {
+                                      "pos": 89,
+                                      "operands": [
+                                        {
+                                          "Count": {
+                                            "pos": 58,
+                                            "operands": [
+                                              {
+                                                "ref": {
+                                                  "pos": 64,
+                                                  "text": "State.agentMessageTimes",
+                                                  "type": "str_coll",
+                                                  "val": "8fda8881-90f6-4eea-890e-6f04b4294fcf"
+                                                }
+                                              }
+                                            ],
+                                            "type": "int"
+                                          }
+                                        },
+                                        {
+                                          "lit": {
+                                            "pos": 91,
+                                            "text": "1",
+                                            "type": "int"
+                                          }
+                                        }
+                                      ],
+                                      "type": "int"
+                                    }
+                                  }
+                                ],
+                                "type": "str"
+                              }
+                            }
+                          ],
+                          "type": "dtm"
+                        }
+                      },
+                      {
+                        "ref": {
+                          "pos": 96,
+                          "text": "State.AgentConnectedTime",
+                          "type": "dtm",
+                          "val": "67de18e8-93ba-4bcb-b857-eaefb020c830"
+                        }
+                      }
+                    ],
+                    "type": "dtm",
+                    "text": "If(State.HasAgentMsg, ToDateTime(State.agentMessageTimes[Count(State.agentMessageTimes) - 1]), State.AgentConnectedTime)"
+                  }
+                },
+                "text": "If(State.HasAgentMsg, ToDateTime(State.agentMessageTimes[Count(State.agentMessageTimes) - 1]), State.AgentConnectedTime)",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "d2deda82-becb-40f4-9951-06fd2cb69ca7",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.HasAgentMsg"
+                    },
+                    {
+                      "id": "8fda8881-90f6-4eea-890e-6f04b4294fcf",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.agentMessageTimes"
+                    },
+                    {
+                      "id": "67de18e8-93ba-4bcb-b857-eaefb020c830",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.AgentConnectedTime"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.LastAgentMsg",
+                    "type": "dtm",
+                    "val": "60161f1c-b1eb-475f-baa0-8c53aae3d69f"
+                  }
+                },
+                "text": "State.LastAgentMsg",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "60161f1c-b1eb-475f-baa0-8c53aae3d69f",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.LastAgentMsg"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "If": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 4,
+                          "text": "State.HasCustomerMsg",
+                          "type": "bln",
+                          "val": "0e4e43ed-b110-4dd5-83e9-15e21b55c1cf"
+                        }
+                      },
+                      {
+                        "ToDateTime": {
+                          "pos": 26,
+                          "operands": [
+                            {
+                              "[": {
+                                "pos": 63,
+                                "operands": [
+                                  {
+                                    "ref": {
+                                      "pos": 37,
+                                      "text": "State.customerMessageTimes",
+                                      "type": "str_coll",
+                                      "val": "654a92aa-f83d-4e50-ae5d-11582f6dacf9"
+                                    }
+                                  },
+                                  {
+                                    "-": {
+                                      "pos": 98,
+                                      "operands": [
+                                        {
+                                          "Count": {
+                                            "pos": 64,
+                                            "operands": [
+                                              {
+                                                "ref": {
+                                                  "pos": 70,
+                                                  "text": "State.customerMessageTimes",
+                                                  "type": "str_coll",
+                                                  "val": "654a92aa-f83d-4e50-ae5d-11582f6dacf9"
+                                                }
+                                              }
+                                            ],
+                                            "type": "int"
+                                          }
+                                        },
+                                        {
+                                          "lit": {
+                                            "pos": 100,
+                                            "text": "1",
+                                            "type": "int"
+                                          }
+                                        }
+                                      ],
+                                      "type": "int"
+                                    }
+                                  }
+                                ],
+                                "type": "str"
+                              }
+                            }
+                          ],
+                          "type": "dtm"
+                        }
+                      },
+                      {
+                        "ref": {
+                          "pos": 105,
+                          "text": "State.AgentConnectedTime",
+                          "type": "dtm",
+                          "val": "67de18e8-93ba-4bcb-b857-eaefb020c830"
+                        }
+                      }
+                    ],
+                    "type": "dtm",
+                    "text": "If(State.HasCustomerMsg, ToDateTime(State.customerMessageTimes[Count(State.customerMessageTimes) - 1]), State.AgentConnectedTime)"
+                  }
+                },
+                "text": "If(State.HasCustomerMsg, ToDateTime(State.customerMessageTimes[Count(State.customerMessageTimes) - 1]), State.AgentConnectedTime)",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "0e4e43ed-b110-4dd5-83e9-15e21b55c1cf",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.HasCustomerMsg"
+                    },
+                    {
+                      "id": "654a92aa-f83d-4e50-ae5d-11582f6dacf9",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.customerMessageTimes"
+                    },
+                    {
+                      "id": "67de18e8-93ba-4bcb-b857-eaefb020c830",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.AgentConnectedTime"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.LastCustomerMsg",
+                    "type": "dtm",
+                    "val": "81f0e16d-c040-4a39-bb3f-f2217ecc8592"
+                  }
+                },
+                "text": "State.LastCustomerMsg",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "81f0e16d-c040-4a39-bb3f-f2217ecc8592",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.LastCustomerMsg"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "If": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        ">": {
+                          "pos": 23,
+                          "operands": [
+                            {
+                              "ref": {
+                                "pos": 4,
+                                "text": "State.LastAgentMsg",
+                                "type": "dtm",
+                                "val": "60161f1c-b1eb-475f-baa0-8c53aae3d69f"
+                              }
+                            },
+                            {
+                              "ref": {
+                                "pos": 25,
+                                "text": "State.AgentConnectedTime",
+                                "type": "dtm",
+                                "val": "67de18e8-93ba-4bcb-b857-eaefb020c830"
+                              }
+                            }
+                          ],
+                          "type": "bln"
+                        }
+                      },
+                      {
+                        "ref": {
+                          "pos": 51,
+                          "text": "State.LastAgentMsg",
+                          "type": "dtm",
+                          "val": "60161f1c-b1eb-475f-baa0-8c53aae3d69f"
+                        }
+                      },
+                      {
+                        "ref": {
+                          "pos": 71,
+                          "text": "State.AgentConnectedTime",
+                          "type": "dtm",
+                          "val": "67de18e8-93ba-4bcb-b857-eaefb020c830"
+                        }
+                      }
+                    ],
+                    "type": "dtm",
+                    "text": "If(State.LastAgentMsg > State.AgentConnectedTime, State.LastAgentMsg, State.AgentConnectedTime)"
+                  }
+                },
+                "text": "If(State.LastAgentMsg > State.AgentConnectedTime, State.LastAgentMsg, State.AgentConnectedTime)",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "60161f1c-b1eb-475f-baa0-8c53aae3d69f",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.LastAgentMsg"
+                    },
+                    {
+                      "id": "67de18e8-93ba-4bcb-b857-eaefb020c830",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.AgentConnectedTime"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.IdleSince",
+                    "type": "dtm",
+                    "val": "4e27f359-1cc2-49cc-be6c-562e52d5eb43"
+                  }
+                },
+                "text": "State.IdleSince",
+                "type": "dtm",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "4e27f359-1cc2-49cc-be6c-562e52d5eb43",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.IdleSince"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "ToInt": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "/": {
+                          "pos": 69,
+                          "operands": [
+                            {
+                              "ToInt": {
+                                "pos": 7,
+                                "operands": [
+                                  {
+                                    "DateTimeDiff": {
+                                      "pos": 13,
+                                      "operands": [
+                                        {
+                                          "GetCurrentDateTimeUtc": {
+                                            "pos": 26,
+                                            "operands": [],
+                                            "type": "dtm"
+                                          }
+                                        },
+                                        {
+                                          "ref": {
+                                            "pos": 51,
+                                            "text": "State.IdleSince",
+                                            "type": "dtm",
+                                            "val": "4e27f359-1cc2-49cc-be6c-562e52d5eb43"
+                                          }
+                                        }
+                                      ],
+                                      "type": "dur"
+                                    }
+                                  }
+                                ],
+                                "type": "int"
+                              }
+                            },
+                            {
+                              "lit": {
+                                "pos": 71,
+                                "text": "60000",
+                                "type": "int"
+                              }
+                            }
+                          ],
+                          "type": "dec"
+                        }
+                      }
+                    ],
+                    "type": "int",
+                    "text": "ToInt(ToInt(DateTimeDiff(GetCurrentDateTimeUtc(), State.IdleSince)) / 60000)"
+                  }
+                },
+                "text": "ToInt(ToInt(DateTimeDiff(GetCurrentDateTimeUtc(), State.IdleSince)) / 60000)",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "4e27f359-1cc2-49cc-be6c-562e52d5eb43",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.IdleSince"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.IdleMinutes",
+                    "type": "int",
+                    "val": "65b8d644-6211-4812-a557-34d5c0d99e20"
+                  }
+                },
+                "text": "State.IdleMinutes",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "65b8d644-6211-4812-a557-34d5c0d99e20",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.IdleMinutes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "and": {
+                    "pos": 22,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 1,
+                          "text": "State.HasCustomerMsg",
+                          "type": "bln",
+                          "val": "0e4e43ed-b110-4dd5-83e9-15e21b55c1cf"
+                        }
+                      },
+                      {
+                        "or": {
+                          "pos": 49,
+                          "operands": [
+                            {
+                              "not": {
+                                "pos": 27,
+                                "operands": [
+                                  {
+                                    "ref": {
+                                      "pos": 31,
+                                      "text": "State.HasAgentMsg",
+                                      "type": "bln",
+                                      "val": "d2deda82-becb-40f4-9951-06fd2cb69ca7"
+                                    }
+                                  }
+                                ],
+                                "type": "bln"
+                              }
+                            },
+                            {
+                              ">": {
+                                "pos": 74,
+                                "operands": [
+                                  {
+                                    "ref": {
+                                      "pos": 52,
+                                      "text": "State.LastCustomerMsg",
+                                      "type": "dtm",
+                                      "val": "81f0e16d-c040-4a39-bb3f-f2217ecc8592"
+                                    }
+                                  },
+                                  {
+                                    "ref": {
+                                      "pos": 76,
+                                      "text": "State.LastAgentMsg",
+                                      "type": "dtm",
+                                      "val": "60161f1c-b1eb-475f-baa0-8c53aae3d69f"
+                                    }
+                                  }
+                                ],
+                                "type": "bln"
+                              }
+                            }
+                          ],
+                          "type": "bln"
+                        }
+                      }
+                    ],
+                    "type": "bln",
+                    "text": "State.HasCustomerMsg and (not State.HasAgentMsg or State.LastCustomerMsg > State.LastAgentMsg)"
+                  }
+                },
+                "text": "State.HasCustomerMsg and (not State.HasAgentMsg or State.LastCustomerMsg > State.LastAgentMsg)",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "0e4e43ed-b110-4dd5-83e9-15e21b55c1cf",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.HasCustomerMsg"
+                    },
+                    {
+                      "id": "d2deda82-becb-40f4-9951-06fd2cb69ca7",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.HasAgentMsg"
+                    },
+                    {
+                      "id": "81f0e16d-c040-4a39-bb3f-f2217ecc8592",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.LastCustomerMsg"
+                    },
+                    {
+                      "id": "60161f1c-b1eb-475f-baa0-8c53aae3d69f",
+                      "type": "dtm",
+                      "isSysRef": false,
+                      "name": "State.LastAgentMsg"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.CustomerWaiting",
+                    "type": "bln",
+                    "val": "6e46fa19-356f-4bd6-a7d6-fa649615ac5d"
+                  }
+                },
+                "text": "State.CustomerWaiting",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "6e46fa19-356f-4bd6-a7d6-fa649615ac5d",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.CustomerWaiting"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "If": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        ">": {
+                          "pos": 40,
+                          "operands": [
+                            {
+                              "Count": {
+                                "pos": 4,
+                                "operands": [
+                                  {
+                                    "ref": {
+                                      "pos": 10,
+                                      "text": "State.customerParticipantIds",
+                                      "type": "str_coll",
+                                      "val": "88c4baa8-b87c-4827-8887-be07583149db"
+                                    }
+                                  }
+                                ],
+                                "type": "int"
+                              }
+                            },
+                            {
+                              "lit": {
+                                "pos": 42,
+                                "text": "0",
+                                "type": "int"
+                              }
+                            }
+                          ],
+                          "type": "bln"
+                        }
+                      },
+                      {
+                        "[": {
+                          "pos": 73,
+                          "operands": [
+                            {
+                              "ref": {
+                                "pos": 45,
+                                "text": "State.customerParticipantIds",
+                                "type": "str_coll",
+                                "val": "88c4baa8-b87c-4827-8887-be07583149db"
+                              }
+                            },
+                            {
+                              "lit": {
+                                "pos": 74,
+                                "text": "0",
+                                "type": "int"
+                              }
+                            }
+                          ],
+                          "type": "str"
+                        }
+                      },
+                      {
+                        "lit": {
+                          "pos": 79,
+                          "text": "",
+                          "type": "str"
+                        }
+                      }
+                    ],
+                    "type": "str",
+                    "text": "If(Count(State.customerParticipantIds) > 0, State.customerParticipantIds[0], \"\")"
+                  }
+                },
+                "text": "If(Count(State.customerParticipantIds) > 0, State.customerParticipantIds[0], \"\")",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "88c4baa8-b87c-4827-8887-be07583149db",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.customerParticipantIds"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.CustomerParticipantId",
+                    "type": "str",
+                    "val": "e0810614-8e69-4f08-91d0-88bfa37ccd35"
+                  }
+                },
+                "text": "State.CustomerParticipantId",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "e0810614-8e69-4f08-91d0-88bfa37ccd35",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "State.CustomerParticipantId"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "nextAction": "1ceac67e-14cd-46ef-a0be-9e117b9db07e"
+        },
+        {
+          "trackingId": 18,
+          "id": "c995845d-16a0-4fab-afd5-0c9922a71918",
+          "name": "Mark alert raised",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "UpdateVariableAction",
+          "variables": [
+            {
+              "expression": {
+                "config": {
+                  "+": {
+                    "pos": 11,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 1,
+                          "text": "State.Seq",
+                          "type": "int",
+                          "val": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d"
+                        }
+                      },
+                      {
+                        "lit": {
+                          "pos": 13,
+                          "text": "1",
+                          "type": "int"
+                        }
+                      }
+                    ],
+                    "type": "int",
+                    "text": "State.Seq + 1"
+                  }
+                },
+                "text": "State.Seq + 1",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Seq"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.Seq",
+                    "type": "int",
+                    "val": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d"
+                  }
+                },
+                "text": "State.Seq",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Seq"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "lit": {
+                    "pos": 1,
+                    "text": "true",
+                    "type": "bln"
+                  }
+                },
+                "text": "true",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {},
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.AlertActive",
+                    "type": "bln",
+                    "val": "e496db7a-13e0-4356-83d7-65effb335dd0"
+                  }
+                },
+                "text": "State.AlertActive",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "e496db7a-13e0-4356-83d7-65effb335dd0",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.AlertActive"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.IdleMinutes",
+                    "type": "int",
+                    "val": "65b8d644-6211-4812-a557-34d5c0d99e20"
+                  }
+                },
+                "text": "State.IdleMinutes",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "65b8d644-6211-4812-a557-34d5c0d99e20",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.IdleMinutes"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.LastAlertMinutes",
+                    "type": "int",
+                    "val": "dc214db8-c9d6-4fa2-83cf-fe71b68a3b2f"
+                  }
+                },
+                "text": "State.LastAlertMinutes",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "dc214db8-c9d6-4fa2-83cf-fe71b68a3b2f",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.LastAlertMinutes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "nextAction": "2d68a309-42e6-47c6-b600-e4e62dd5f888"
+        },
+        {
+          "trackingId": 19,
+          "id": "2d68a309-42e6-47c6-b600-e4e62dd5f888",
+          "name": "Set IdleAlert = 1",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DataAction",
+          "actionName": "GC - Set Idle Alert Attributes",
+          "actionId": "custom_-_62354c94-4244-4763-8e06-8614c2ecf56e",
+          "category": {
+            "id": "",
+            "name": "Genesys Cloud Data Actions"
+          },
+          "useSuggestedTimeout": true,
+          "errorBindings": [],
+          "inputs": [
+            {
+              "name": "conversationId",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "Flow.conversationId",
+                    "type": "str",
+                    "val": "c3bb3e87-1c61-4ea6-9d38-e1a9a5a350af"
+                  }
+                },
+                "text": "Flow.conversationId",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "c3bb3e87-1c61-4ea6-9d38-e1a9a5a350af",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "Flow.conversationId"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "participantId",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.CustomerParticipantId",
+                    "type": "str",
+                    "val": "e0810614-8e69-4f08-91d0-88bfa37ccd35"
+                  }
+                },
+                "text": "State.CustomerParticipantId",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "e0810614-8e69-4f08-91d0-88bfa37ccd35",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "State.CustomerParticipantId"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "idleAlert",
+              "value": {
+                "config": {
+                  "lit": {
+                    "pos": 1,
+                    "text": "1",
+                    "type": "str"
+                  }
+                },
+                "text": "1",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 1
+                },
+                "metaData": {},
+                "version": 2
+              }
+            },
+            {
+              "name": "idleMinutes",
+              "value": {
+                "config": {
+                  "ToString": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 10,
+                          "text": "State.IdleMinutes",
+                          "type": "int",
+                          "val": "65b8d644-6211-4812-a557-34d5c0d99e20"
+                        }
+                      }
+                    ],
+                    "type": "str",
+                    "text": "ToString(State.IdleMinutes)"
+                  }
+                },
+                "text": "ToString(State.IdleMinutes)",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "65b8d644-6211-4812-a557-34d5c0d99e20",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.IdleMinutes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "idleSeq",
+              "value": {
+                "config": {
+                  "ToString": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 10,
+                          "text": "State.Seq",
+                          "type": "int",
+                          "val": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d"
+                        }
+                      }
+                    ],
+                    "type": "str",
+                    "text": "ToString(State.Seq)"
+                  }
+                },
+                "text": "ToString(State.Seq)",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Seq"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "outputs": [],
+          "timeout": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "P0D0H0M20S0F",
+                "type": "dur"
+              }
+            },
+            "text": "P0D0H0M20S0F",
+            "type": "dur",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Success",
+              "outputId": "__SUCCESS__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            },
+            {
+              "label": "Failure",
+              "outputId": "__FAILURE__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            },
+            {
+              "label": "Timeout",
+              "outputId": "__TIMEOUT__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            }
+          ]
+        },
+        {
+          "trackingId": 20,
+          "id": "d0127cf8-4635-46bc-a280-6999c7284802",
+          "name": "New alert or repeat due?",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DecisionAction",
+          "expression": {
+            "config": {
+              "or": {
+                "pos": 23,
+                "operands": [
+                  {
+                    "not": {
+                      "pos": 1,
+                      "operands": [
+                        {
+                          "ref": {
+                            "pos": 5,
+                            "text": "State.AlertActive",
+                            "type": "bln",
+                            "val": "e496db7a-13e0-4356-83d7-65effb335dd0"
+                          }
+                        }
+                      ],
+                      "type": "bln"
+                    }
+                  },
+                  {
+                    "and": {
+                      "pos": 56,
+                      "operands": [
+                        {
+                          ">": {
+                            "pos": 52,
+                            "operands": [
+                              {
+                                "ref": {
+                                  "pos": 27,
+                                  "text": "State.RepeatEveryMinutes",
+                                  "type": "int",
+                                  "val": "d4dbd8ef-c442-494d-9908-51fa324c9ec6"
+                                }
+                              },
+                              {
+                                "lit": {
+                                  "pos": 54,
+                                  "text": "0",
+                                  "type": "int"
+                                }
+                              }
+                            ],
+                            "type": "bln"
+                          }
+                        },
+                        {
+                          ">=": {
+                            "pos": 103,
+                            "operands": [
+                              {
+                                "-": {
+                                  "pos": 78,
+                                  "operands": [
+                                    {
+                                      "ref": {
+                                        "pos": 60,
+                                        "text": "State.IdleMinutes",
+                                        "type": "int",
+                                        "val": "65b8d644-6211-4812-a557-34d5c0d99e20"
+                                      }
+                                    },
+                                    {
+                                      "ref": {
+                                        "pos": 80,
+                                        "text": "State.LastAlertMinutes",
+                                        "type": "int",
+                                        "val": "dc214db8-c9d6-4fa2-83cf-fe71b68a3b2f"
+                                      }
+                                    }
+                                  ],
+                                  "type": "int"
+                                }
+                              },
+                              {
+                                "ref": {
+                                  "pos": 106,
+                                  "text": "State.RepeatEveryMinutes",
+                                  "type": "int",
+                                  "val": "d4dbd8ef-c442-494d-9908-51fa324c9ec6"
+                                }
+                              }
+                            ],
+                            "type": "bln"
+                          }
+                        }
+                      ],
+                      "type": "bln"
+                    }
+                  }
+                ],
+                "type": "bln",
+                "text": "not State.AlertActive or (State.RepeatEveryMinutes > 0 and State.IdleMinutes - State.LastAlertMinutes >= State.RepeatEveryMinutes)"
+              }
+            },
+            "text": "not State.AlertActive or (State.RepeatEveryMinutes > 0 and State.IdleMinutes - State.LastAlertMinutes >= State.RepeatEveryMinutes)",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "e496db7a-13e0-4356-83d7-65effb335dd0",
+                  "type": "bln",
+                  "isSysRef": false,
+                  "name": "State.AlertActive"
+                },
+                {
+                  "id": "d4dbd8ef-c442-494d-9908-51fa324c9ec6",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.RepeatEveryMinutes"
+                },
+                {
+                  "id": "65b8d644-6211-4812-a557-34d5c0d99e20",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.IdleMinutes"
+                },
+                {
+                  "id": "dc214db8-c9d6-4fa2-83cf-fe71b68a3b2f",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.LastAlertMinutes"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Yes",
+              "outputId": "__YES__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "c995845d-16a0-4fab-afd5-0c9922a71918"
+            },
+            {
+              "label": "No",
+              "outputId": "__NO__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            }
+          ]
+        },
+        {
+          "trackingId": 21,
+          "id": "9204bca6-b7d1-4ee7-b20b-65a9e22f5b14",
+          "name": "Mark alert cleared",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "UpdateVariableAction",
+          "variables": [
+            {
+              "expression": {
+                "config": {
+                  "+": {
+                    "pos": 11,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 1,
+                          "text": "State.Seq",
+                          "type": "int",
+                          "val": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d"
+                        }
+                      },
+                      {
+                        "lit": {
+                          "pos": 13,
+                          "text": "1",
+                          "type": "int"
+                        }
+                      }
+                    ],
+                    "type": "int",
+                    "text": "State.Seq + 1"
+                  }
+                },
+                "text": "State.Seq + 1",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Seq"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.Seq",
+                    "type": "int",
+                    "val": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d"
+                  }
+                },
+                "text": "State.Seq",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Seq"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "lit": {
+                    "pos": 1,
+                    "text": "false",
+                    "type": "bln"
+                  }
+                },
+                "text": "false",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {},
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.AlertActive",
+                    "type": "bln",
+                    "val": "e496db7a-13e0-4356-83d7-65effb335dd0"
+                  }
+                },
+                "text": "State.AlertActive",
+                "type": "bln",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "e496db7a-13e0-4356-83d7-65effb335dd0",
+                      "type": "bln",
+                      "isSysRef": false,
+                      "name": "State.AlertActive"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "lit": {
+                    "pos": 1,
+                    "text": "0",
+                    "type": "int"
+                  }
+                },
+                "text": "0",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {},
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.LastAlertMinutes",
+                    "type": "int",
+                    "val": "dc214db8-c9d6-4fa2-83cf-fe71b68a3b2f"
+                  }
+                },
+                "text": "State.LastAlertMinutes",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "dc214db8-c9d6-4fa2-83cf-fe71b68a3b2f",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.LastAlertMinutes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "nextAction": "036868ca-9f5c-441b-b7e5-f400bc5aab21"
+        },
+        {
+          "trackingId": 22,
+          "id": "036868ca-9f5c-441b-b7e5-f400bc5aab21",
+          "name": "Set IdleAlert = 0",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DataAction",
+          "actionName": "GC - Set Idle Alert Attributes",
+          "actionId": "custom_-_62354c94-4244-4763-8e06-8614c2ecf56e",
+          "category": {
+            "id": "",
+            "name": "Genesys Cloud Data Actions"
+          },
+          "useSuggestedTimeout": true,
+          "errorBindings": [],
+          "inputs": [
+            {
+              "name": "conversationId",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "Flow.conversationId",
+                    "type": "str",
+                    "val": "c3bb3e87-1c61-4ea6-9d38-e1a9a5a350af"
+                  }
+                },
+                "text": "Flow.conversationId",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "c3bb3e87-1c61-4ea6-9d38-e1a9a5a350af",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "Flow.conversationId"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "participantId",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.CustomerParticipantId",
+                    "type": "str",
+                    "val": "e0810614-8e69-4f08-91d0-88bfa37ccd35"
+                  }
+                },
+                "text": "State.CustomerParticipantId",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "e0810614-8e69-4f08-91d0-88bfa37ccd35",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "State.CustomerParticipantId"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "idleAlert",
+              "value": {
+                "config": {
+                  "lit": {
+                    "pos": 1,
+                    "text": "0",
+                    "type": "str"
+                  }
+                },
+                "text": "0",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 1
+                },
+                "metaData": {},
+                "version": 2
+              }
+            },
+            {
+              "name": "idleMinutes",
+              "value": {
+                "config": {
+                  "ToString": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 10,
+                          "text": "State.IdleMinutes",
+                          "type": "int",
+                          "val": "65b8d644-6211-4812-a557-34d5c0d99e20"
+                        }
+                      }
+                    ],
+                    "type": "str",
+                    "text": "ToString(State.IdleMinutes)"
+                  }
+                },
+                "text": "ToString(State.IdleMinutes)",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "65b8d644-6211-4812-a557-34d5c0d99e20",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.IdleMinutes"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "idleSeq",
+              "value": {
+                "config": {
+                  "ToString": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 10,
+                          "text": "State.Seq",
+                          "type": "int",
+                          "val": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d"
+                        }
+                      }
+                    ],
+                    "type": "str",
+                    "text": "ToString(State.Seq)"
+                  }
+                },
+                "text": "ToString(State.Seq)",
+                "type": "str",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Seq"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "outputs": [],
+          "timeout": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "P0D0H0M20S0F",
+                "type": "dur"
+              }
+            },
+            "text": "P0D0H0M20S0F",
+            "type": "dur",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Success",
+              "outputId": "__SUCCESS__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            },
+            {
+              "label": "Failure",
+              "outputId": "__FAILURE__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            },
+            {
+              "label": "Timeout",
+              "outputId": "__TIMEOUT__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            }
+          ]
+        },
+        {
+          "trackingId": 23,
+          "id": "c3f1dfc1-6906-4316-9ac3-b45e375d594b",
+          "name": "Clear active alert?",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DecisionAction",
+          "expression": {
+            "config": {
+              "ref": {
+                "pos": 1,
+                "text": "State.AlertActive",
+                "type": "bln",
+                "val": "e496db7a-13e0-4356-83d7-65effb335dd0"
+              }
+            },
+            "text": "State.AlertActive",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "e496db7a-13e0-4356-83d7-65effb335dd0",
+                  "type": "bln",
+                  "isSysRef": false,
+                  "name": "State.AlertActive"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Yes",
+              "outputId": "__YES__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "9204bca6-b7d1-4ee7-b20b-65a9e22f5b14"
+            },
+            {
+              "label": "No",
+              "outputId": "__NO__",
+              "uiMetaData": {
+                "collapsed": false
+              }
+            }
+          ]
+        },
+        {
+          "trackingId": 24,
+          "id": "1ceac67e-14cd-46ef-a0be-9e117b9db07e",
+          "name": "Idle beyond threshold?",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DecisionAction",
+          "expression": {
+            "config": {
+              "and": {
+                "pos": 47,
+                "operands": [
+                  {
+                    ">=": {
+                      "pos": 20,
+                      "operands": [
+                        {
+                          "ref": {
+                            "pos": 2,
+                            "text": "State.IdleMinutes",
+                            "type": "int",
+                            "val": "65b8d644-6211-4812-a557-34d5c0d99e20"
+                          }
+                        },
+                        {
+                          "ref": {
+                            "pos": 23,
+                            "text": "State.ThresholdMinutes",
+                            "type": "int",
+                            "val": "4bc04aa5-c1ee-43b3-9375-1b9e9f117327"
+                          }
+                        }
+                      ],
+                      "type": "bln"
+                    }
+                  },
+                  {
+                    "or": {
+                      "pos": 74,
+                      "operands": [
+                        {
+                          "ref": {
+                            "pos": 52,
+                            "text": "State.CustomerWaiting",
+                            "type": "bln",
+                            "val": "6e46fa19-356f-4bd6-a7d6-fa649615ac5d"
+                          }
+                        },
+                        {
+                          "not": {
+                            "pos": 77,
+                            "operands": [
+                              {
+                                "ref": {
+                                  "pos": 81,
+                                  "text": "State.OnlyWhenCustomerWaiting",
+                                  "type": "bln",
+                                  "val": "e0490f72-8f44-42cc-978e-c728aae46890"
+                                }
+                              }
+                            ],
+                            "type": "bln"
+                          }
+                        }
+                      ],
+                      "type": "bln"
+                    }
+                  }
+                ],
+                "type": "bln",
+                "text": "(State.IdleMinutes >= State.ThresholdMinutes) and (State.CustomerWaiting or not State.OnlyWhenCustomerWaiting)"
+              }
+            },
+            "text": "(State.IdleMinutes >= State.ThresholdMinutes) and (State.CustomerWaiting or not State.OnlyWhenCustomerWaiting)",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "65b8d644-6211-4812-a557-34d5c0d99e20",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.IdleMinutes"
+                },
+                {
+                  "id": "4bc04aa5-c1ee-43b3-9375-1b9e9f117327",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.ThresholdMinutes"
+                },
+                {
+                  "id": "6e46fa19-356f-4bd6-a7d6-fa649615ac5d",
+                  "type": "bln",
+                  "isSysRef": false,
+                  "name": "State.CustomerWaiting"
+                },
+                {
+                  "id": "e0490f72-8f44-42cc-978e-c728aae46890",
+                  "type": "bln",
+                  "isSysRef": false,
+                  "name": "State.OnlyWhenCustomerWaiting"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Yes",
+              "outputId": "__YES__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "d0127cf8-4635-46bc-a280-6999c7284802"
+            },
+            {
+              "label": "No",
+              "outputId": "__NO__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "c3f1dfc1-6906-4316-9ac3-b45e375d594b"
+            }
+          ]
+        },
+        {
+          "trackingId": 25,
+          "id": "140af693-805f-41e5-ad3f-90bdf2740053",
+          "name": "Agent still connected?",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DecisionAction",
+          "expression": {
+            "config": {
+              ">=": {
+                "pos": 18,
+                "operands": [
+                  {
+                    "ref": {
+                      "pos": 1,
+                      "text": "State.AgentIndex",
+                      "type": "int",
+                      "val": "d8abe6e0-173c-4900-8d61-8d7c31398a64"
+                    }
+                  },
+                  {
+                    "lit": {
+                      "pos": 21,
+                      "text": "0",
+                      "type": "int"
+                    }
+                  }
+                ],
+                "type": "bln",
+                "text": "State.AgentIndex >= 0"
+              }
+            },
+            "text": "State.AgentIndex >= 0",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "d8abe6e0-173c-4900-8d61-8d7c31398a64",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.AgentIndex"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Yes",
+              "outputId": "__YES__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "fc6e0811-bce1-4f1b-b637-01330233d307"
+            },
+            {
+              "label": "No",
+              "outputId": "__NO__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "e82e6dad-96c6-418c-be03-b1379dfd3666"
+            }
+          ]
+        },
+        {
+          "trackingId": 26,
+          "id": "e1dc9cc7-c0c3-4cd0-8b6f-bf4a7b7226dc",
+          "name": "Count failure",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "UpdateVariableAction",
+          "variables": [
+            {
+              "expression": {
+                "config": {
+                  "+": {
+                    "pos": 16,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 1,
+                          "text": "State.Failures",
+                          "type": "int",
+                          "val": "7ade59ca-242d-4809-ad56-5430d281f4e8"
+                        }
+                      },
+                      {
+                        "lit": {
+                          "pos": 18,
+                          "text": "1",
+                          "type": "int"
+                        }
+                      }
+                    ],
+                    "type": "int",
+                    "text": "State.Failures + 1"
+                  }
+                },
+                "text": "State.Failures + 1",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "7ade59ca-242d-4809-ad56-5430d281f4e8",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Failures"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.Failures",
+                    "type": "int",
+                    "val": "7ade59ca-242d-4809-ad56-5430d281f4e8"
+                  }
+                },
+                "text": "State.Failures",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "7ade59ca-242d-4809-ad56-5430d281f4e8",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Failures"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "nextAction": "df80aa6a-97ca-47a7-b2b6-29b41bae28a3"
+        },
+        {
+          "trackingId": 27,
+          "id": "283ba0eb-6b5c-47ee-8937-c8aacce19d84",
+          "name": "Give up after repeated failures",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "ExitLoopAction"
+        },
+        {
+          "trackingId": 28,
+          "id": "917caef5-ecd9-466c-b246-563ee72fdb19",
+          "name": "Try again next minute",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "NextLoopAction"
+        },
+        {
+          "trackingId": 29,
+          "id": "df80aa6a-97ca-47a7-b2b6-29b41bae28a3",
+          "name": "Too many failures?",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DecisionAction",
+          "expression": {
+            "config": {
+              ">=": {
+                "pos": 16,
+                "operands": [
+                  {
+                    "ref": {
+                      "pos": 1,
+                      "text": "State.Failures",
+                      "type": "int",
+                      "val": "7ade59ca-242d-4809-ad56-5430d281f4e8"
+                    }
+                  },
+                  {
+                    "lit": {
+                      "pos": 19,
+                      "text": "5",
+                      "type": "int"
+                    }
+                  }
+                ],
+                "type": "bln",
+                "text": "State.Failures >= 5"
+              }
+            },
+            "text": "State.Failures >= 5",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "7ade59ca-242d-4809-ad56-5430d281f4e8",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.Failures"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Yes",
+              "outputId": "__YES__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "283ba0eb-6b5c-47ee-8937-c8aacce19d84"
+            },
+            {
+              "label": "No",
+              "outputId": "__NO__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "917caef5-ecd9-466c-b246-563ee72fdb19"
+            }
+          ]
+        },
+        {
+          "trackingId": 30,
+          "id": "e37c7385-a160-438c-9f08-0c29e6777a82",
+          "name": "Count failure",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "UpdateVariableAction",
+          "variables": [
+            {
+              "expression": {
+                "config": {
+                  "+": {
+                    "pos": 16,
+                    "operands": [
+                      {
+                        "ref": {
+                          "pos": 1,
+                          "text": "State.Failures",
+                          "type": "int",
+                          "val": "7ade59ca-242d-4809-ad56-5430d281f4e8"
+                        }
+                      },
+                      {
+                        "lit": {
+                          "pos": 18,
+                          "text": "1",
+                          "type": "int"
+                        }
+                      }
+                    ],
+                    "type": "int",
+                    "text": "State.Failures + 1"
+                  }
+                },
+                "text": "State.Failures + 1",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "7ade59ca-242d-4809-ad56-5430d281f4e8",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Failures"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.Failures",
+                    "type": "int",
+                    "val": "7ade59ca-242d-4809-ad56-5430d281f4e8"
+                  }
+                },
+                "text": "State.Failures",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "7ade59ca-242d-4809-ad56-5430d281f4e8",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.Failures"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            }
+          ],
+          "nextAction": "dbbc6b92-09c4-475e-85a9-a405c875fa87"
+        },
+        {
+          "trackingId": 31,
+          "id": "f657d094-b3db-4a79-92db-aef6e7a062c2",
+          "name": "Give up after repeated failures",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "ExitLoopAction"
+        },
+        {
+          "trackingId": 32,
+          "id": "dce66e51-1776-4013-8187-94a88f7b5e64",
+          "name": "Try again next minute",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "NextLoopAction"
+        },
+        {
+          "trackingId": 33,
+          "id": "dbbc6b92-09c4-475e-85a9-a405c875fa87",
+          "name": "Too many failures?",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "DecisionAction",
+          "expression": {
+            "config": {
+              ">=": {
+                "pos": 16,
+                "operands": [
+                  {
+                    "ref": {
+                      "pos": 1,
+                      "text": "State.Failures",
+                      "type": "int",
+                      "val": "7ade59ca-242d-4809-ad56-5430d281f4e8"
+                    }
+                  },
+                  {
+                    "lit": {
+                      "pos": 19,
+                      "text": "5",
+                      "type": "int"
+                    }
+                  }
+                ],
+                "type": "bln",
+                "text": "State.Failures >= 5"
+              }
+            },
+            "text": "State.Failures >= 5",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "7ade59ca-242d-4809-ad56-5430d281f4e8",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.Failures"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "paths": [
+            {
+              "label": "Yes",
+              "outputId": "__YES__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "f657d094-b3db-4a79-92db-aef6e7a062c2"
+            },
+            {
+              "label": "No",
+              "outputId": "__NO__",
+              "uiMetaData": {
+                "collapsed": false
+              },
+              "nextActionId": "dce66e51-1776-4013-8187-94a88f7b5e64"
+            }
+          ]
+        },
+        {
+          "trackingId": 34,
+          "id": "7eaab3e0-cb5b-47cf-8ce7-5136c43e61c9",
+          "name": "End Workflow",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "EndWorkflowAction",
+          "exitReason": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str"
+              }
+            },
+            "text": "",
+            "type": "str",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "trackingId": 35,
+          "id": "f82bc1c8-54e4-4ae8-a730-47376ce21bd1",
+          "name": "Poll every minute",
+          "uiMetaData": {
+            "collapsed": false
+          },
+          "__type": "LoopAction",
+          "currentIndex": {
+            "config": {
+              "ref": {
+                "pos": 1,
+                "text": "State.PollIndex",
+                "type": "int",
+                "val": "f9a44f74-6bba-46d0-96a4-e8049d69bf26"
+              }
+            },
+            "text": "State.PollIndex",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 2
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "f9a44f74-6bba-46d0-96a4-e8049d69bf26",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.PollIndex"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "loopCount": {
+            "config": {
+              "ref": {
+                "pos": 1,
+                "text": "State.MaxPolls",
+                "type": "int",
+                "val": "11fd6cb5-5336-4f48-981d-c54ddb0c3a17"
+              }
+            },
+            "text": "State.MaxPolls",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 0
+            },
+            "metaData": {
+              "references": [
+                {
+                  "id": "11fd6cb5-5336-4f48-981d-c54ddb0c3a17",
+                  "type": "int",
+                  "isSysRef": false,
+                  "name": "State.MaxPolls"
+                }
+              ]
+            },
+            "version": 2
+          },
+          "path": {
+            "nextActionId": "56e74514-b9e5-4618-a2bb-0ff32fbb2192",
+            "label": "Loop",
+            "outputId": "__LOOP__",
+            "uiMetaData": {
+              "collapsed": false
+            }
+          },
+          "nextAction": "7eaab3e0-cb5b-47cf-8ce7-5136c43e61c9"
+        }
+      ],
+      "variables": [
+        {
+          "id": "4bc04aa5-c1ee-43b3-9375-1b9e9f117327",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.ThresholdMinutes",
+          "description": "Minutes of agent silence before the first alert",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "3",
+                "type": "int"
+              }
+            },
+            "text": "3",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "d4dbd8ef-c442-494d-9908-51fa324c9ec6",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.RepeatEveryMinutes",
+          "description": "Re-alert interval while still idle; 0 = alert once",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "3",
+                "type": "int"
+              }
+            },
+            "text": "3",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "e0490f72-8f44-42cc-978e-c728aae46890",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "BoolVariable",
+          "name": "State.OnlyWhenCustomerWaiting",
+          "description": "Alert only when the customer's last message is newer than the agent's",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "true",
+                "type": "bln"
+              }
+            },
+            "text": "true",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "11fd6cb5-5336-4f48-981d-c54ddb0c3a17",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.MaxPolls",
+          "description": "Safety cap on one-minute polls",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "240",
+                "type": "int"
+              }
+            },
+            "text": "240",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "eacdcbb5-5ea2-435e-9a7e-a058a15bc19d",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.Seq",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "0",
+                "type": "int"
+              }
+            },
+            "text": "0",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "dc214db8-c9d6-4fa2-83cf-fe71b68a3b2f",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.LastAlertMinutes",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "0",
+                "type": "int"
+              }
+            },
+            "text": "0",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "7ade59ca-242d-4809-ad56-5430d281f4e8",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.Failures",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "0",
+                "type": "int"
+              }
+            },
+            "text": "0",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "d8abe6e0-173c-4900-8d61-8d7c31398a64",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.AgentIndex",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "int"
+              }
+            },
+            "text": "",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "65b8d644-6211-4812-a557-34d5c0d99e20",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.IdleMinutes",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "int"
+              }
+            },
+            "text": "",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "f9a44f74-6bba-46d0-96a4-e8049d69bf26",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "IntegerVariable",
+          "name": "State.PollIndex",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "int"
+              }
+            },
+            "text": "",
+            "type": "int",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "e496db7a-13e0-4356-83d7-65effb335dd0",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "BoolVariable",
+          "name": "State.AlertActive",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "lit": {
+                "pos": 1,
+                "text": "false",
+                "type": "bln"
+              }
+            },
+            "text": "false",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 1
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "d2deda82-becb-40f4-9951-06fd2cb69ca7",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "BoolVariable",
+          "name": "State.HasAgentMsg",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "bln"
+              }
+            },
+            "text": "",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "0e4e43ed-b110-4dd5-83e9-15e21b55c1cf",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "BoolVariable",
+          "name": "State.HasCustomerMsg",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "bln"
+              }
+            },
+            "text": "",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "6e46fa19-356f-4bd6-a7d6-fa649615ac5d",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "BoolVariable",
+          "name": "State.CustomerWaiting",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "bln"
+              }
+            },
+            "text": "",
+            "type": "bln",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "67de18e8-93ba-4bcb-b857-eaefb020c830",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "DateTimeVariable",
+          "name": "State.AgentConnectedTime",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "dtm"
+              }
+            },
+            "text": "",
+            "type": "dtm",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "60161f1c-b1eb-475f-baa0-8c53aae3d69f",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "DateTimeVariable",
+          "name": "State.LastAgentMsg",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "dtm"
+              }
+            },
+            "text": "",
+            "type": "dtm",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "81f0e16d-c040-4a39-bb3f-f2217ecc8592",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "DateTimeVariable",
+          "name": "State.LastCustomerMsg",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "dtm"
+              }
+            },
+            "text": "",
+            "type": "dtm",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "4e27f359-1cc2-49cc-be6c-562e52d5eb43",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "DateTimeVariable",
+          "name": "State.IdleSince",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "dtm"
+              }
+            },
+            "text": "",
+            "type": "dtm",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "e0810614-8e69-4f08-91d0-88bfa37ccd35",
+          "isCollection": false,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.CustomerParticipantId",
+          "description": "",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str"
+              }
+            },
+            "text": "",
+            "type": "str",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "88c4baa8-b87c-4827-8887-be07583149db",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.customerParticipantIds",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "654a92aa-f83d-4e50-ae5d-11582f6dacf9",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.customerMessageTimes",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "8fda8881-90f6-4eea-890e-6f04b4294fcf",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.agentMessageTimes",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "45075446-76a8-4726-907b-71c5acc76837",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.connectedAgentUserIds",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "158148a2-1628-40f7-82c6-51c4ae91f6af",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.connectedAgentTimes",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "a774473a-0964-405d-a9e5-f35a3e377e6d",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.alertingAgentUserIds",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        }
+      ]
+    }
+  ],
+  "supportedLanguageOptions": [
+    {
+      "language": "en-US"
+    }
+  ],
+  "variables": [
+    {
+      "id": "c3bb3e87-1c61-4ea6-9d38-e1a9a5a350af",
+      "isCollection": false,
+      "isInternal": false,
+      "isOutput": false,
+      "isInput": true,
+      "isSecure": false,
+      "version": "1.0",
+      "__type": "StringVariable",
+      "name": "Flow.conversationId",
+      "description": "Set by the trigger (TopLevelPrimitives)",
+      "initialValue": {
+        "config": {
+          "emp": {
+            "pos": 1,
+            "text": "",
+            "type": "str"
+          }
+        },
+        "text": "",
+        "type": "str",
+        "uiMetaData": {
+          "mode": 3
+        },
+        "metaData": {},
+        "version": 2
+      }
+    },
+    {
+      "id": "6ae64ac9-b77c-4dba-9e42-56a1a61363ea",
+      "isCollection": false,
+      "isInternal": false,
+      "isOutput": false,
+      "isInput": true,
+      "isSecure": false,
+      "version": "1.0",
+      "__type": "StringVariable",
+      "name": "Flow.participantId",
+      "description": "Set by the trigger (TopLevelPrimitives)",
+      "initialValue": {
+        "config": {
+          "emp": {
+            "pos": 1,
+            "text": "",
+            "type": "str"
+          }
+        },
+        "text": "",
+        "type": "str",
+        "uiMetaData": {
+          "mode": 3
+        },
+        "metaData": {},
+        "version": 2
+      }
+    },
+    {
+      "id": "62ee0362-7afb-40ba-9f25-2051baee4dd5",
+      "isCollection": false,
+      "isInternal": false,
+      "isOutput": false,
+      "isInput": true,
+      "isSecure": false,
+      "version": "1.0",
+      "__type": "StringVariable",
+      "name": "Flow.userId",
+      "description": "Set by the trigger (TopLevelPrimitives)",
+      "initialValue": {
+        "config": {
+          "emp": {
+            "pos": 1,
+            "text": "",
+            "type": "str"
+          }
+        },
+        "text": "",
+        "type": "str",
+        "uiMetaData": {
+          "mode": 3
+        },
+        "metaData": {},
+        "version": 2
+      }
+    },
+    {
+      "id": "cd812425-2d89-4ea6-aea5-dd366d53aee6",
+      "isCollection": false,
+      "isInternal": false,
+      "isOutput": false,
+      "isInput": true,
+      "isSecure": false,
+      "version": "1.0",
+      "__type": "StringVariable",
+      "name": "Flow.queueId",
+      "description": "Set by the trigger (TopLevelPrimitives)",
+      "initialValue": {
+        "config": {
+          "emp": {
+            "pos": 1,
+            "text": "",
+            "type": "str"
+          }
+        },
+        "text": "",
+        "type": "str",
+        "uiMetaData": {
+          "mode": 3
+        },
+        "metaData": {},
+        "version": 2
+      }
+    },
+    {
+      "id": "00f2fd32-5415-493a-90e9-36af0f21350f",
+      "isCollection": false,
+      "isInternal": false,
+      "isOutput": false,
+      "isInput": true,
+      "isSecure": false,
+      "version": "1.0",
+      "__type": "StringVariable",
+      "name": "Flow.mediaType",
+      "description": "Set by the trigger (TopLevelPrimitives)",
+      "initialValue": {
+        "config": {
+          "emp": {
+            "pos": 1,
+            "text": "",
+            "type": "str"
+          }
+        },
+        "text": "",
+        "type": "str",
+        "uiMetaData": {
+          "mode": 3
+        },
+        "metaData": {},
+        "version": 2
+      }
+    }
+  ],
+  "versionMetaData": {
+    "inputSchema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Chat Idle Monitor",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "conversationId": {
+          "type": "string"
+        },
+        "participantId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "queueId": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "string"
+        }
+      }
+    },
+    "outputSchema": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Chat Idle Monitor",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {}
+    }
+  }
+}

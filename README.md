@@ -64,7 +64,10 @@ picked up on the next tick.
 | `tools/build_script.py` | Generator. Rebuild with other timings, or **merge the alert into your existing script** (`--merge`). Standard-library Python only. |
 | `data-actions/GC - Get Message Conversation Activity.json` | Data action: GET message conversation → last message times per side, connected agent, customer participant id |
 | `data-actions/GC - Set Idle Alert Attributes.json` | Data action: PATCH the three attributes on the customer participant |
-| `workflow/Chat-Idle-Monitor-workflow.md` | Step-by-step Architect workflow and trigger build, with every expression |
+| `workflow/Chat Idle Monitor.i3WorkFlow` | **Ready to import** Architect workflow (Flow menu > Import). `Chat Idle Monitor.decoded.json` is the same flow as readable JSON. |
+| `tools/build_workflow.py` | Generator for the workflow file and the trigger payload. Change thresholds or bake in your data action ids and rebuild. |
+| `trigger/Chat Idle Monitor.trigger.json` | Trigger definition as a `POST /api/v2/processautomation/triggers` payload (or copy the values into Admin > Triggers) |
+| `workflow/Chat-Idle-Monitor-workflow.md` | Import steps, plus the step-by-step manual build with every expression (documents what the file does) |
 
 ---
 
@@ -73,8 +76,10 @@ picked up on the next tick.
 1. **Data actions**: Admin > Integrations > Actions > Import both files, Save & Publish, test the
    GET one with a real messaging conversation ID. Make sure the Data Actions integration's OAuth
    role can read conversations and edit participant attributes (see the workflow guide).
-2. **Workflow**: build `Chat Idle Monitor` from `workflow/Chat-Idle-Monitor-workflow.md`.
-   Set `Task.ThresholdMinutes` to your X. Publish.
+2. **Workflow**: Architect > Workflow > Add `Chat Idle Monitor` > Flow menu > Import
+   `workflow/Chat Idle Monitor.i3WorkFlow`. Check the two Call Data Action steps resolved to
+   the imported data actions, set `State.ThresholdMinutes` to your X, Save, Publish.
+   (`workflow/Chat-Idle-Monitor-workflow.md` has the full manual build if you prefer.)
 3. **Script**: Admin > Scripts > Import `script/Chat-Idle-Alert.script`, open it, check the
    three Input variables (`IdleAlert`, `IdleMinutes`, `IdleSeq`) show **Input = Yes**, Publish.
    Assign it to the chat/messaging queue(s) (Queue > Routing > Script, or the inbound message
@@ -85,7 +90,9 @@ picked up on the next tick.
    custom actions, the banner at the top of the start page and chains the monitor after your
    current On Load action.
 4. **Trigger**: Admin > Triggers, topic `v2.detail.events.conversation.{id}.user.start`,
-   TopLevelPrimitives, criteria `mediaType = MESSAGE`, target the workflow. Enable it last.
+   TopLevelPrimitives, criteria `mediaType = MESSAGE`, target the workflow. Or POST
+   `trigger/Chat Idle Monitor.trigger.json` from the API Explorer with the workflow id filled in.
+   Enable it last.
 
 ---
 
@@ -108,12 +115,12 @@ something does not fire.
 
 ## 6. Tuning and limits
 
-* **Poll rates**: workflow waits 1 min (change the Wait literal); the script ticks every 30 s
+* **Poll rates**: workflow waits 1 min (change the Wait literal, or rebuild with the generator); the script ticks every 30 s
   (`--tick`, or edit the Delay step in custom action *Idle Monitor - Tick*). Worst-case latency
   from "X minutes idle" to pop-up is poll + tick.
 * **Coverage**: the script loop runs for `--hours` (default 4) per script load and the workflow
-  for `Task.MaxPolls` minutes. Raise both for very long-running async conversations.
-* **Only when customer waiting**: default on. Turn `Task.OnlyWhenCustomerWaiting` off to alert on
+  for `State.MaxPolls` minutes. Raise both for very long-running async conversations.
+* **Only when customer waiting**: default on. Turn `State.OnlyWhenCustomerWaiting` off to alert on
   agent silence even when the customer has gone quiet too.
 * **Multi-page scripts**: the loop lives on the start page's On Load action. If your script
   navigates to other pages, call *Idle Monitor - Start* from those pages' On Load actions too,

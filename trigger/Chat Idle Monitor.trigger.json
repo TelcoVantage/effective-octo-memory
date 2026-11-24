@@ -1,0 +1,22 @@
+{
+  "name": "Chat Idle Monitor - agent assigned",
+  "description": "Starts the Chat Idle Monitor workflow each time an agent is assigned a messaging interaction.",
+  "topicName": "v2.detail.events.conversation.{id}.user.start",
+  "enabled": false,
+  "delayBySeconds": 0,
+  "eventTTLSeconds": 600,
+  "target": {
+    "type": "Workflow",
+    "id": "<WORKFLOW_ID - paste the id of the published 'Chat Idle Monitor' workflow>",
+    "workflowTargetSettings": {
+      "dataFormat": "TopLevelPrimitives"
+    }
+  },
+  "matchCriteria": [
+    {
+      "jsonPath": "mediaType",
+      "operator": "Equal",
+      "value": "MESSAGE"
+    }
+  ]
+}
