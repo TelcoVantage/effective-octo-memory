@@ -117,12 +117,12 @@ Start
    │                                     State.AgentConnectedTime)
    │     State.IdleSince             = If(State.LastAgentMsg > State.AgentConnectedTime, State.LastAgentMsg, State.AgentConnectedTime)
    │     State.IdleMinutes           = ToInt(ToInt(DateTimeDiff(GetCurrentDateTimeUtc(), State.IdleSince)) / 60000)
-   │     State.CustomerWaiting       = State.HasCustomerMsg and (not State.HasAgentMsg or State.LastCustomerMsg > State.LastAgentMsg)
+   │     State.CustomerWaiting       = State.HasCustomerMsg and (!State.HasAgentMsg or State.LastCustomerMsg > State.LastAgentMsg)
    │     State.CustomerParticipantId = If(Count(State.customerParticipantIds) > 0, State.customerParticipantIds[0], "")
    ├─ Decision  "Idle?"
-   │     (State.IdleMinutes >= State.ThresholdMinutes) and (State.CustomerWaiting or not State.OnlyWhenCustomerWaiting)
+   │     (State.IdleMinutes >= State.ThresholdMinutes) and (State.CustomerWaiting or !State.OnlyWhenCustomerWaiting)
    │     Yes ─ Decision "Raise / repeat?"
-   │     │       not State.AlertActive or (State.RepeatEveryMinutes > 0 and State.IdleMinutes - State.LastAlertMinutes >= State.RepeatEveryMinutes)
+   │     │       !State.AlertActive or (State.RepeatEveryMinutes > 0 and State.IdleMinutes - State.LastAlertMinutes >= State.RepeatEveryMinutes)
    │     │       Yes ─ Update Data   State.Seq = State.Seq + 1 ; State.AlertActive = true ; State.LastAlertMinutes = State.IdleMinutes
    │     │             Call Data Action "GC - Set Idle Alert Attributes"
    │     │                 conversationId = Flow.conversationId
@@ -142,6 +142,7 @@ End Workflow
 Notes on expressions:
 
 * The Loop count is the *expression* `State.MaxPolls`; the literal editor caps at 99, an expression does not.
+* Logical NOT is `!` in Architect; `and` / `or` are keywords.
 * `FindFirst(collection, value)` returns `-1` when not found; `Count()` and `[index]` work on collections.
 * `DateTimeDiff(a, b)` returns a Duration; `ToInt(duration)` gives milliseconds, hence `/ 60000`.
   If your editor flags `DateTimeDiff`, use `ToInt(GetCurrentDateTimeUtc() - State.IdleSince)` instead.

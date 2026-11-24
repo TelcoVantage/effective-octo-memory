@@ -51,7 +51,7 @@ TOKEN_RE = re.compile(r"""
         (?P<str>"(?:[^"\\]|\\.)*") |
         (?P<num>\d+(?:\.\d+)?) |
         (?P<ident>[A-Za-z_][A-Za-z0-9_]*(?:\.[A-Za-z_][A-Za-z0-9_]*)*) |
-        (?P<op>==|!=|>=|<=|>|<|\+|-|\*|/|\(|\)|\[|\]|,)
+        (?P<op>==|!=|>=|<=|>|<|!|\+|-|\*|/|\(|\)|\[|\]|,)
     )""", re.VERBOSE)
 
 
@@ -124,9 +124,10 @@ class ExprParser:
         return left
 
     def p_not(self):
-        if self.peek()[1] == "not":
+        # Architect spells logical NOT as "!" (the word "not" is not an operator there)
+        if self.peek()[1] == "!":
             _, _, pos = self.take()
-            return self.node("not", pos, [self.p_not()], BLN)
+            return self.node("!", pos, [self.p_not()], BLN)
         return self.p_cmp()
 
     def p_cmp(self):
@@ -387,7 +388,7 @@ def build(args):
          "variable": f.ref("State.IdleSince")},
         {"expression": f.expr("ToInt(ToInt(DateTimeDiff(GetCurrentDateTimeUtc(), State.IdleSince)) / 60000)"),
          "variable": f.ref("State.IdleMinutes")},
-        {"expression": f.expr("State.HasCustomerMsg and (not State.HasAgentMsg or State.LastCustomerMsg > State.LastAgentMsg)"),
+        {"expression": f.expr("State.HasCustomerMsg and (!State.HasAgentMsg or State.LastCustomerMsg > State.LastAgentMsg)"),
          "variable": f.ref("State.CustomerWaiting")},
         {"expression": f.expr('If(Count(State.customerParticipantIds) > 0, State.customerParticipantIds[0], "")'),
          "variable": f.ref("State.CustomerParticipantId")},
@@ -400,7 +401,7 @@ def build(args):
     ])
     raise_set = set_action("Set IdleAlert = 1", "1")
     raise_dec = f.action("DecisionAction", "New alert or repeat due?",
-                         expression=f.expr("not State.AlertActive or (State.RepeatEveryMinutes > 0 and State.IdleMinutes - State.LastAlertMinutes >= State.RepeatEveryMinutes)"),
+                         expression=f.expr("!State.AlertActive or (State.RepeatEveryMinutes > 0 and State.IdleMinutes - State.LastAlertMinutes >= State.RepeatEveryMinutes)"),
                          paths=[path("__YES__", "Yes", chain(raise_update, raise_set)), path("__NO__", "No")])
 
     clear_update = f.action("UpdateVariableAction", "Mark alert cleared", variables=[
@@ -413,7 +414,7 @@ def build(args):
                          paths=[path("__YES__", "Yes", chain(clear_update, clear_set)), path("__NO__", "No")])
 
     idle_dec = f.action("DecisionAction", "Idle beyond threshold?",
-                        expression=f.expr("(State.IdleMinutes >= State.ThresholdMinutes) and (State.CustomerWaiting or not State.OnlyWhenCustomerWaiting)"),
+                        expression=f.expr("(State.IdleMinutes >= State.ThresholdMinutes) and (State.CustomerWaiting or !State.OnlyWhenCustomerWaiting)"),
                         paths=[path("__YES__", "Yes", raise_dec), path("__NO__", "No", clear_dec)])
 
     connected_dec = f.action("DecisionAction", "Agent still connected?", expression=f.expr("State.AgentIndex >= 0"),
