@@ -1,0 +1,899 @@
+{
+  "name": "Chat Idle Alert",
+  "startPageId": "c7b9ccbf-8d34-4f3e-9f5f-f1dae528c91b",
+  "pages": [
+    {
+      "id": "c7b9ccbf-8d34-4f3e-9f5f-f1dae528c91b",
+      "name": "Chat",
+      "properties": {
+        "onLoadAction": {
+          "typeName": "action",
+          "value": {
+            "actionName": "9c79cd26-74fa-444b-bc27-fe034b32555e",
+            "actionArgumentValues": []
+          }
+        },
+        "backgroundColor": {
+          "typeName": "color",
+          "value": "#ffffff"
+        }
+      },
+      "dataVersion": 0,
+      "rootContainer": {
+        "type": "verticalStackContainer",
+        "properties": {
+          "margin": {
+            "typeName": "spacing",
+            "value": 0
+          },
+          "alignment": {
+            "typeName": "alignment",
+            "value": "start"
+          },
+          "width": {
+            "typeName": "sizing",
+            "value": {
+              "sizeType": "stretch",
+              "size": 100
+            }
+          },
+          "height": {
+            "typeName": "sizing",
+            "value": {
+              "sizeType": "stretch",
+              "size": 100
+            }
+          },
+          "visible": {
+            "typeName": "variable"
+          },
+          "preserveLayoutLocation": {
+            "typeName": "boolean",
+            "value": false
+          },
+          "backgroundColor": {
+            "typeName": "color",
+            "value": "#ffffff"
+          },
+          "padding": {
+            "typeName": "spacing",
+            "value": 16
+          },
+          "childArrangement": {
+            "typeName": "childArrangement",
+            "value": "start"
+          },
+          "border": {
+            "typeName": "border",
+            "value": {
+              "width": 0,
+              "style": "solid",
+              "color": "#ffffff"
+            }
+          }
+        },
+        "children": [
+          {
+            "type": "horizontalStackContainer",
+            "properties": {
+              "margin": {
+                "typeName": "spacing",
+                "value": [
+                  0,
+                  0,
+                  12,
+                  0
+                ]
+              },
+              "alignment": {
+                "typeName": "alignment",
+                "value": "start"
+              },
+              "width": {
+                "typeName": "sizing",
+                "value": {
+                  "sizeType": "stretch",
+                  "size": 100
+                }
+              },
+              "height": {
+                "typeName": "sizing",
+                "value": {
+                  "sizeType": "auto"
+                }
+              },
+              "visible": {
+                "typeName": "variable",
+                "value": "b034c306-2af6-4f2d-b6fd-d74f4f119ead"
+              },
+              "preserveLayoutLocation": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "backgroundColor": {
+                "typeName": "color",
+                "value": "#c62828"
+              },
+              "padding": {
+                "typeName": "spacing",
+                "value": 12
+              },
+              "childArrangement": {
+                "typeName": "childArrangement",
+                "value": "start"
+              },
+              "border": {
+                "typeName": "border",
+                "value": {
+                  "width": 0,
+                  "style": "solid",
+                  "color": "#c62828"
+                }
+              }
+            },
+            "children": [
+              {
+                "type": "text",
+                "properties": {
+                  "margin": {
+                    "typeName": "spacing",
+                    "value": 0
+                  },
+                  "alignment": {
+                    "typeName": "alignment",
+                    "value": "start"
+                  },
+                  "width": {
+                    "typeName": "sizing",
+                    "value": {
+                      "sizeType": "stretch",
+                      "size": 100
+                    }
+                  },
+                  "height": {
+                    "typeName": "sizing",
+                    "value": {
+                      "sizeType": "auto"
+                    }
+                  },
+                  "visible": {
+                    "typeName": "variable"
+                  },
+                  "preserveLayoutLocation": {
+                    "typeName": "boolean",
+                    "value": false
+                  },
+                  "text": {
+                    "typeName": "interpolatedText",
+                    "value": "⚠ NO REPLY SENT FOR {{dd4bbd5f-c0b2-48dc-85f3-ec28f974cdc3}} MIN - the customer is waiting. Please answer this chat now or wrap it up."
+                  },
+                  "bold": {
+                    "typeName": "boolean",
+                    "value": true
+                  },
+                  "italic": {
+                    "typeName": "boolean",
+                    "value": false
+                  },
+                  "underline": {
+                    "typeName": "boolean",
+                    "value": false
+                  },
+                  "font": {
+                    "typeName": "font",
+                    "value": "Arial, \"Helvetica Neue\", Helvetica, sans-serif"
+                  },
+                  "fontSize": {
+                    "typeName": "integer",
+                    "value": 14
+                  },
+                  "justification": {
+                    "typeName": "text",
+                    "value": "left"
+                  },
+                  "backgroundColor": {
+                    "typeName": "null"
+                  },
+                  "textColor": {
+                    "typeName": "color",
+                    "value": "#ffffff"
+                  },
+                  "padding": {
+                    "typeName": "spacing",
+                    "value": 0
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "properties": {
+              "margin": {
+                "typeName": "spacing",
+                "value": [
+                  0,
+                  0,
+                  8,
+                  0
+                ]
+              },
+              "alignment": {
+                "typeName": "alignment",
+                "value": "start"
+              },
+              "width": {
+                "typeName": "sizing",
+                "value": {
+                  "sizeType": "stretch",
+                  "size": 100
+                }
+              },
+              "height": {
+                "typeName": "sizing",
+                "value": {
+                  "sizeType": "auto"
+                }
+              },
+              "visible": {
+                "typeName": "variable"
+              },
+              "preserveLayoutLocation": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "text": {
+                "typeName": "interpolatedText",
+                "value": "Chat idle monitor is active on this interaction."
+              },
+              "bold": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "italic": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "underline": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "font": {
+                "typeName": "font",
+                "value": "Arial, \"Helvetica Neue\", Helvetica, sans-serif"
+              },
+              "fontSize": {
+                "typeName": "integer",
+                "value": 11
+              },
+              "justification": {
+                "typeName": "text",
+                "value": "left"
+              },
+              "backgroundColor": {
+                "typeName": "null"
+              },
+              "textColor": {
+                "typeName": "color",
+                "value": "#6b7280"
+              },
+              "padding": {
+                "typeName": "spacing",
+                "value": 0
+              }
+            }
+          },
+          {
+            "type": "text",
+            "properties": {
+              "margin": {
+                "typeName": "spacing",
+                "value": 0
+              },
+              "alignment": {
+                "typeName": "alignment",
+                "value": "start"
+              },
+              "width": {
+                "typeName": "sizing",
+                "value": {
+                  "sizeType": "stretch",
+                  "size": 100
+                }
+              },
+              "height": {
+                "typeName": "sizing",
+                "value": {
+                  "sizeType": "auto"
+                }
+              },
+              "visible": {
+                "typeName": "variable"
+              },
+              "preserveLayoutLocation": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "text": {
+                "typeName": "interpolatedText",
+                "value": "Add your usual script content below this line, or merge this file into your existing script with tools/build_script.py --merge."
+              },
+              "bold": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "italic": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "underline": {
+                "typeName": "boolean",
+                "value": false
+              },
+              "font": {
+                "typeName": "font",
+                "value": "Arial, \"Helvetica Neue\", Helvetica, sans-serif"
+              },
+              "fontSize": {
+                "typeName": "integer",
+                "value": 12
+              },
+              "justification": {
+                "typeName": "text",
+                "value": "left"
+              },
+              "backgroundColor": {
+                "typeName": "null"
+              },
+              "textColor": {
+                "typeName": "color",
+                "value": "#374151"
+              },
+              "padding": {
+                "typeName": "spacing",
+                "value": 0
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "features": {
+    "dialer": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        },
+        "contactListId": {
+          "typeName": "text",
+          "value": ""
+        },
+        "onContactDataLoadAction": {
+          "typeName": "action",
+          "value": {}
+        }
+      }
+    },
+    "scripter": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": true
+        }
+      }
+    },
+    "screenPop": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        }
+      }
+    },
+    "callback": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        }
+      }
+    },
+    "chat": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": true
+        }
+      }
+    },
+    "email": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        }
+      }
+    },
+    "message": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": true
+        }
+      }
+    },
+    "bridge": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        }
+      }
+    },
+    "uuiData": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        }
+      }
+    },
+    "customerSecuredData": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        }
+      }
+    },
+    "list": {
+      "properties": {
+        "enabled": {
+          "typeName": "boolean",
+          "value": false
+        }
+      }
+    }
+  },
+  "variables": [
+    {
+      "id": "19d5e843-e34b-4a9b-8f15-d02b596f9609",
+      "name": "IdleAlert",
+      "description": "Set by the Chat Idle Monitor workflow: 1 = alert active, 0 = cleared",
+      "type": {
+        "isDynamic": false,
+        "isList": false,
+        "name": "string"
+      },
+      "value": "",
+      "input": true,
+      "output": false
+    },
+    {
+      "id": "dd4bbd5f-c0b2-48dc-85f3-ec28f974cdc3",
+      "name": "IdleMinutes",
+      "description": "Set by the Chat Idle Monitor workflow: minutes since agent's last activity",
+      "type": {
+        "isDynamic": false,
+        "isList": false,
+        "name": "string"
+      },
+      "value": "",
+      "input": true,
+      "output": false
+    },
+    {
+      "id": "9a623002-2dff-4874-b008-23aace4adde5",
+      "name": "IdleSeq",
+      "description": "Set by the Chat Idle Monitor workflow: increments on every change",
+      "type": {
+        "isDynamic": false,
+        "isList": false,
+        "name": "string"
+      },
+      "value": "",
+      "input": true,
+      "output": false
+    },
+    {
+      "id": "e5027ec9-f893-4c11-9a8b-d51e7495e225",
+      "name": "IdleSeqSeen",
+      "description": "Internal: last IdleSeq the script reacted to",
+      "type": {
+        "isDynamic": false,
+        "isList": false,
+        "name": "string"
+      },
+      "value": "",
+      "input": false,
+      "output": false
+    },
+    {
+      "id": "b034c306-2af6-4f2d-b6fd-d74f4f119ead",
+      "name": "IdleBannerVisible",
+      "description": "Internal: drives visibility of the red idle banner",
+      "type": {
+        "isDynamic": false,
+        "isList": false,
+        "name": "boolean"
+      },
+      "value": false,
+      "input": false,
+      "output": false
+    }
+  ],
+  "customActions": [
+    {
+      "id": "036a1586-35ac-47f6-be0a-df07ca775019",
+      "name": "Idle Monitor - Tick",
+      "action": {
+        "block": [
+          {
+            "type": "delay",
+            "delay": {
+              "typeName": "integer",
+              "value": 30000
+            }
+          },
+          {
+            "type": "tryCatch",
+            "tryBlock": [
+              {
+                "type": "action",
+                "actionName": "scripter.refreshInputVariables",
+                "actionArgumentValues": []
+              },
+              {
+                "type": "if",
+                "condition": {
+                  "type": "standard",
+                  "leftHandSide": {
+                    "typeName": "variable",
+                    "value": "9a623002-2dff-4874-b008-23aace4adde5"
+                  },
+                  "operator": "notEqual",
+                  "rightHandSide": {
+                    "typeName": "variable",
+                    "value": "e5027ec9-f893-4c11-9a8b-d51e7495e225"
+                  }
+                },
+                "ifBlock": [
+                  {
+                    "type": "action",
+                    "actionName": "scripter.setVariable",
+                    "actionArgumentValues": [
+                      {
+                        "typeName": "variableWithValue",
+                        "value": {
+                          "variable": {
+                            "typeName": "variable",
+                            "value": "e5027ec9-f893-4c11-9a8b-d51e7495e225"
+                          },
+                          "variableTypeName": "string",
+                          "valueOfVariableProperty": {
+                            "typeName": "variable",
+                            "value": "9a623002-2dff-4874-b008-23aace4adde5"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "if",
+                    "condition": {
+                      "type": "standard",
+                      "leftHandSide": {
+                        "typeName": "variable",
+                        "value": "19d5e843-e34b-4a9b-8f15-d02b596f9609"
+                      },
+                      "operator": "equal",
+                      "rightHandSide": {
+                        "typeName": "interpolatedText",
+                        "value": "1"
+                      }
+                    },
+                    "ifBlock": [
+                      {
+                        "type": "action",
+                        "actionName": "scripter.setVariable",
+                        "actionArgumentValues": [
+                          {
+                            "typeName": "variableWithValue",
+                            "value": {
+                              "variable": {
+                                "typeName": "variable",
+                                "value": "b034c306-2af6-4f2d-b6fd-d74f4f119ead"
+                              },
+                              "variableTypeName": "boolean",
+                              "valueOfVariableProperty": {
+                                "typeName": "boolean",
+                                "value": true
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "action",
+                        "actionName": "scripter.alert",
+                        "actionArgumentValues": [
+                          {
+                            "typeName": "interpolatedText",
+                            "value": "Chat waiting: no reply from you for {{dd4bbd5f-c0b2-48dc-85f3-ec28f974cdc3}} min. The customer is still waiting - please answer this chat now or wrap it up."
+                          }
+                        ]
+                      }
+                    ],
+                    "elseBlock": [
+                      {
+                        "type": "action",
+                        "actionName": "scripter.setVariable",
+                        "actionArgumentValues": [
+                          {
+                            "typeName": "variableWithValue",
+                            "value": {
+                              "variable": {
+                                "typeName": "variable",
+                                "value": "b034c306-2af6-4f2d-b6fd-d74f4f119ead"
+                              },
+                              "variableTypeName": "boolean",
+                              "valueOfVariableProperty": {
+                                "typeName": "boolean",
+                                "value": false
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "elseBlock": []
+              }
+            ],
+            "catchBlock": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+      "name": "Idle Monitor - 10 min block",
+      "action": {
+        "block": [
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "036a1586-35ac-47f6-be0a-df07ca775019",
+            "actionArgumentValues": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "9c79cd26-74fa-444b-bc27-fe034b32555e",
+      "name": "Idle Monitor - Start",
+      "action": {
+        "block": [
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          },
+          {
+            "type": "action",
+            "actionName": "bc495df1-eb5d-460d-bbba-3199d1fc1323",
+            "actionArgumentValues": []
+          }
+        ]
+      }
+    }
+  ],
+  "dataVersion": 0
+}

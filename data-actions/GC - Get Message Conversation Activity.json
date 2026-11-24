@@ -1,0 +1,66 @@
+{
+  "name": "GC - Get Message Conversation Activity",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/conversations/messages/${input.conversationId}",
+      "requestType": "GET",
+      "headers": {},
+      "requestTemplate": "${input.rawRequest}"
+    },
+    "response": {
+      "translationMap": {
+        "customerParticipantIds": "$.participants[?(@.purpose=='customer')].id",
+        "customerMessageTimes": "$.participants[?(@.purpose=='customer')].messages[-30:].messageTime",
+        "agentMessageTimes": "$.participants[?(@.purpose=='agent')].messages[-30:].messageTime",
+        "connectedAgentUserIds": "$.participants[?(@.purpose=='agent' && @.state=='connected')].userId",
+        "connectedAgentTimes": "$.participants[?(@.purpose=='agent' && @.state=='connected')].connectedTime",
+        "alertingAgentUserIds": "$.participants[?(@.purpose=='agent' && @.state=='alerting')].userId"
+      },
+      "translationMapDefaults": {
+        "customerParticipantIds": "[]",
+        "customerMessageTimes": "[]",
+        "agentMessageTimes": "[]",
+        "connectedAgentUserIds": "[]",
+        "connectedAgentTimes": "[]",
+        "alertingAgentUserIds": "[]"
+      },
+      "successTemplate": "{\"customerParticipantIds\": ${customerParticipantIds}, \"customerMessageTimes\": ${customerMessageTimes}, \"agentMessageTimes\": ${agentMessageTimes}, \"connectedAgentUserIds\": ${connectedAgentUserIds}, \"connectedAgentTimes\": ${connectedAgentTimes}, \"alertingAgentUserIds\": ${alertingAgentUserIds}}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "Get Message Conversation Activity",
+        "type": "object",
+        "required": ["conversationId"],
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "description": "Conversation ID of the web messaging / messaging interaction"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "Message Conversation Activity",
+        "type": "object",
+        "properties": {
+          "customerParticipantIds": { "type": "array", "items": { "type": "string" } },
+          "customerMessageTimes": { "type": "array", "items": { "type": "string" } },
+          "agentMessageTimes": { "type": "array", "items": { "type": "string" } },
+          "connectedAgentUserIds": { "type": "array", "items": { "type": "string" } },
+          "connectedAgentTimes": { "type": "array", "items": { "type": "string" } },
+          "alertingAgentUserIds": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}

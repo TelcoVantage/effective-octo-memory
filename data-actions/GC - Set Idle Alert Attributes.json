@@ -1,0 +1,50 @@
+{
+  "name": "GC - Set Idle Alert Attributes",
+  "integrationType": "purecloud-data-actions",
+  "actionType": "custom",
+  "config": {
+    "request": {
+      "requestUrlTemplate": "/api/v2/conversations/${input.conversationId}/participants/${input.participantId}/attributes",
+      "requestType": "PATCH",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "requestTemplate": "{\"attributes\": {\"IdleAlert\": \"${input.idleAlert}\", \"IdleMinutes\": \"${input.idleMinutes}\", \"IdleSeq\": \"${input.idleSeq}\"}}"
+    },
+    "response": {
+      "translationMap": {},
+      "translationMapDefaults": {},
+      "successTemplate": "{\"status\": \"ok\"}"
+    }
+  },
+  "contract": {
+    "input": {
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "Set Idle Alert Attributes",
+        "type": "object",
+        "required": ["conversationId", "participantId", "idleAlert", "idleMinutes", "idleSeq"],
+        "properties": {
+          "conversationId": { "type": "string" },
+          "participantId": { "type": "string", "description": "Customer participant ID (the script reads participant data from the customer participant)" },
+          "idleAlert": { "type": "string", "description": "\"1\" = show alert, \"0\" = clear alert" },
+          "idleMinutes": { "type": "string", "description": "Minutes since the agent's last activity, as text" },
+          "idleSeq": { "type": "string", "description": "Counter that must change on every update, as text" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "output": {
+      "successSchema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "title": "Set Idle Alert Attributes result",
+        "type": "object",
+        "properties": {
+          "status": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "secure": false
+}
