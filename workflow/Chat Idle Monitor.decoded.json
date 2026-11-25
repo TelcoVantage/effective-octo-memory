@@ -2,14 +2,14 @@
   "nextTrackingNumber": 36,
   "defaultLanguage": "en-US",
   "description": "Alerts the agent script when a chat/messaging interaction has had no agent reply for State.ThresholdMinutes. Started per interaction by a trigger on v2.detail.events.conversation.{id}.user.start.",
-  "initialSequence": "d44aaf0d-531a-46db-ac10-44fa546963e1",
+  "initialSequence": "c108aed4-9762-4eac-84ba-f3c160e9bbf0",
   "name": "Chat Idle Monitor",
   "uiMetaData": {
     "bridgeServerActions": [],
     "screenPops": [],
     "actionServiceActions": [
       {
-        "id": "custom_-_4720714b-80f5-4802-b453-80c743289901",
+        "id": "custom_-_ae8a4402-99c6-433e-a891-64e7718a8eba",
         "name": "GC - Get Message Conversation Activity",
         "category": "Genesys Cloud Data Actions",
         "contract": {
@@ -52,6 +52,11 @@
                     "name": "connectedAgentUserIds",
                     "required": false
                   },
+                  "connectedAgentParticipantIds": {
+                    "type": "array",
+                    "name": "connectedAgentParticipantIds",
+                    "required": false
+                  },
                   "connectedAgentTimes": {
                     "type": "array",
                     "name": "connectedAgentTimes",
@@ -60,6 +65,11 @@
                   "alertingAgentUserIds": {
                     "type": "array",
                     "name": "alertingAgentUserIds",
+                    "required": false
+                  },
+                  "alertingAgentParticipantIds": {
+                    "type": "array",
+                    "name": "alertingAgentParticipantIds",
                     "required": false
                   }
                 }
@@ -100,6 +110,11 @@
               "name": "connectedAgentUserIds",
               "required": false
             },
+            "connectedAgentParticipantIds": {
+              "type": "array",
+              "name": "connectedAgentParticipantIds",
+              "required": false
+            },
             "connectedAgentTimes": {
               "type": "array",
               "name": "connectedAgentTimes",
@@ -109,12 +124,17 @@
               "type": "array",
               "name": "alertingAgentUserIds",
               "required": false
+            },
+            "alertingAgentParticipantIds": {
+              "type": "array",
+              "name": "alertingAgentParticipantIds",
+              "required": false
             }
           }
         }
       },
       {
-        "id": "custom_-_089b8192-5bf1-4b58-956c-b07777596eb1",
+        "id": "custom_-_9f672266-8aec-4bb6-bf41-9bd2e6467ff8",
         "name": "GC - Set Idle Alert Attributes",
         "category": "Genesys Cloud Data Actions",
         "contract": {
@@ -217,27 +237,27 @@
     "dataAction": [
       {
         "name": "GC - Get Message Conversation Activity",
-        "id": "custom_-_4720714b-80f5-4802-b453-80c743289901",
+        "id": "custom_-_ae8a4402-99c6-433e-a891-64e7718a8eba",
         "context": [
           {
             "actionName": "DataAction",
-            "id": "63bbbba3-a2a1-45fc-82db-91efee324bb1",
+            "id": "852ae665-aeae-498b-b6d3-38146475ba8a",
             "name": "Get conversation activity"
           }
         ]
       },
       {
         "name": "GC - Set Idle Alert Attributes",
-        "id": "custom_-_089b8192-5bf1-4b58-956c-b07777596eb1",
+        "id": "custom_-_9f672266-8aec-4bb6-bf41-9bd2e6467ff8",
         "context": [
           {
             "actionName": "DataAction",
-            "id": "7b894402-59e6-4e01-9d51-86ec9e08d6ec",
+            "id": "ed6ebd2a-fccd-4ead-8c4f-5413850be572",
             "name": "Set IdleAlert = 1"
           },
           {
             "actionName": "DataAction",
-            "id": "16b1edec-ea4d-4191-808f-876bc603e0d5",
+            "id": "06178ff8-badc-4498-88df-690af128065f",
             "name": "Set IdleAlert = 0"
           }
         ]
@@ -267,9 +287,9 @@
   },
   "flowSequenceItemList": [
     {
-      "startAction": "f5e76994-eff5-43e1-add7-ec57d65471ad",
+      "startAction": "81ce99fe-eb58-4f69-aa12-f93491501a67",
       "trackingId": 10,
-      "id": "d44aaf0d-531a-46db-ac10-44fa546963e1",
+      "id": "c108aed4-9762-4eac-84ba-f3c160e9bbf0",
       "name": "Initial State",
       "uiMetaData": {
         "collapsed": false
@@ -278,7 +298,7 @@
       "actionList": [
         {
           "trackingId": 11,
-          "id": "9f823cee-b247-4fd2-9ffb-2753ff97dcac",
+          "id": "8552142e-f804-44f5-a4b3-b088728af7b5",
           "name": "Wait 1 minute",
           "uiMetaData": {
             "collapsed": false
@@ -316,18 +336,18 @@
             "metaData": {},
             "version": 2
           },
-          "nextAction": "63bbbba3-a2a1-45fc-82db-91efee324bb1"
+          "nextAction": "852ae665-aeae-498b-b6d3-38146475ba8a"
         },
         {
           "trackingId": 12,
-          "id": "63bbbba3-a2a1-45fc-82db-91efee324bb1",
+          "id": "852ae665-aeae-498b-b6d3-38146475ba8a",
           "name": "Get conversation activity",
           "uiMetaData": {
             "collapsed": false
           },
           "__type": "DataAction",
           "actionName": "GC - Get Message Conversation Activity",
-          "actionId": "custom_-_4720714b-80f5-4802-b453-80c743289901",
+          "actionId": "custom_-_ae8a4402-99c6-433e-a891-64e7718a8eba",
           "category": {
             "id": "",
             "name": "Genesys Cloud Data Actions"
@@ -343,7 +363,7 @@
                     "pos": 1,
                     "text": "Flow.conversationId",
                     "type": "str",
-                    "val": "be224fe8-08e8-4825-adcb-f037ef458263"
+                    "val": "252c152a-3e9e-4dbe-b584-97b5bdc8d4f7"
                   }
                 },
                 "text": "Flow.conversationId",
@@ -354,7 +374,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "be224fe8-08e8-4825-adcb-f037ef458263",
+                      "id": "252c152a-3e9e-4dbe-b584-97b5bdc8d4f7",
                       "type": "str",
                       "isSysRef": false,
                       "name": "Flow.conversationId"
@@ -374,7 +394,7 @@
                     "pos": 1,
                     "text": "State.customerParticipantIds",
                     "type": "str_coll",
-                    "val": "202c442b-23c2-4925-973f-0478f8cc99d8"
+                    "val": "02135558-3549-4ef9-928c-b357de9bf39a"
                   }
                 },
                 "text": "State.customerParticipantIds",
@@ -385,7 +405,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "202c442b-23c2-4925-973f-0478f8cc99d8",
+                      "id": "02135558-3549-4ef9-928c-b357de9bf39a",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.customerParticipantIds"
@@ -403,7 +423,7 @@
                     "pos": 1,
                     "text": "State.customerMessageTimes",
                     "type": "str_coll",
-                    "val": "63832a9f-c4fa-4452-be19-ca3b1116784a"
+                    "val": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309"
                   }
                 },
                 "text": "State.customerMessageTimes",
@@ -414,7 +434,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "63832a9f-c4fa-4452-be19-ca3b1116784a",
+                      "id": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.customerMessageTimes"
@@ -432,7 +452,7 @@
                     "pos": 1,
                     "text": "State.agentMessageTimes",
                     "type": "str_coll",
-                    "val": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7"
+                    "val": "b9dafcc0-d2b9-47e1-bd59-788d5705676b"
                   }
                 },
                 "text": "State.agentMessageTimes",
@@ -443,7 +463,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7",
+                      "id": "b9dafcc0-d2b9-47e1-bd59-788d5705676b",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.agentMessageTimes"
@@ -461,7 +481,7 @@
                     "pos": 1,
                     "text": "State.connectedAgentUserIds",
                     "type": "str_coll",
-                    "val": "486aa5ba-51c8-4346-954d-ceb2fa6f9fb9"
+                    "val": "5189c715-527a-4ffe-9d50-fae197a1dae6"
                   }
                 },
                 "text": "State.connectedAgentUserIds",
@@ -472,10 +492,39 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "486aa5ba-51c8-4346-954d-ceb2fa6f9fb9",
+                      "id": "5189c715-527a-4ffe-9d50-fae197a1dae6",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.connectedAgentUserIds"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "connectedAgentParticipantIds",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.connectedAgentParticipantIds",
+                    "type": "str_coll",
+                    "val": "2f099f90-6c61-4d2d-9992-9c13482a63d6"
+                  }
+                },
+                "text": "State.connectedAgentParticipantIds",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "2f099f90-6c61-4d2d-9992-9c13482a63d6",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.connectedAgentParticipantIds"
                     }
                   ]
                 },
@@ -490,7 +539,7 @@
                     "pos": 1,
                     "text": "State.connectedAgentTimes",
                     "type": "str_coll",
-                    "val": "6d3f5189-56cf-485a-845e-412e8b6acff9"
+                    "val": "64307c55-0474-4f84-a52e-e0a87a3456fc"
                   }
                 },
                 "text": "State.connectedAgentTimes",
@@ -501,7 +550,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "6d3f5189-56cf-485a-845e-412e8b6acff9",
+                      "id": "64307c55-0474-4f84-a52e-e0a87a3456fc",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.connectedAgentTimes"
@@ -519,7 +568,7 @@
                     "pos": 1,
                     "text": "State.alertingAgentUserIds",
                     "type": "str_coll",
-                    "val": "175560f9-8ae7-405f-9357-cf5002075e38"
+                    "val": "0d8e80c1-c335-4c9e-a9ab-f228297ee815"
                   }
                 },
                 "text": "State.alertingAgentUserIds",
@@ -530,10 +579,39 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "175560f9-8ae7-405f-9357-cf5002075e38",
+                      "id": "0d8e80c1-c335-4c9e-a9ab-f228297ee815",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.alertingAgentUserIds"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "name": "alertingAgentParticipantIds",
+              "value": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.alertingAgentParticipantIds",
+                    "type": "str_coll",
+                    "val": "20ae8aca-4196-4c3d-94ad-79e960e014ab"
+                  }
+                },
+                "text": "State.alertingAgentParticipantIds",
+                "type": "str_coll",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "20ae8aca-4196-4c3d-94ad-79e960e014ab",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.alertingAgentParticipantIds"
                     }
                   ]
                 },
@@ -564,7 +642,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "901c8e77-b08b-4da7-9f8a-13a4bd9b4122"
+              "nextActionId": "394149ec-1a07-4d07-8f50-9e0d77212ae6"
             },
             {
               "label": "Failure",
@@ -572,7 +650,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "b5a95d22-7163-42b4-91d2-dcf0903d16ab"
+              "nextActionId": "8eab1cd8-10a2-4eb8-b47a-53384226f488"
             },
             {
               "label": "Timeout",
@@ -580,13 +658,13 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "68ed56ee-7f71-4b28-a811-c7c4a07ba41f"
+              "nextActionId": "c4378d1a-de87-4651-88b8-c007942ea178"
             }
           ]
         },
         {
           "trackingId": 13,
-          "id": "901c8e77-b08b-4da7-9f8a-13a4bd9b4122",
+          "id": "394149ec-1a07-4d07-8f50-9e0d77212ae6",
           "name": "Find our agent",
           "uiMetaData": {
             "collapsed": false
@@ -604,7 +682,7 @@
                           "pos": 11,
                           "text": "State.connectedAgentUserIds",
                           "type": "str_coll",
-                          "val": "486aa5ba-51c8-4346-954d-ceb2fa6f9fb9"
+                          "val": "5189c715-527a-4ffe-9d50-fae197a1dae6"
                         }
                       },
                       {
@@ -612,7 +690,7 @@
                           "pos": 40,
                           "text": "Flow.userId",
                           "type": "str",
-                          "val": "dd839b7a-1336-4ea1-b0d5-68b2e95d0b68"
+                          "val": "5600d71f-9790-499e-972c-7b6da90e7c1c"
                         }
                       }
                     ],
@@ -628,13 +706,13 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "486aa5ba-51c8-4346-954d-ceb2fa6f9fb9",
+                      "id": "5189c715-527a-4ffe-9d50-fae197a1dae6",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.connectedAgentUserIds"
                     },
                     {
-                      "id": "dd839b7a-1336-4ea1-b0d5-68b2e95d0b68",
+                      "id": "5600d71f-9790-499e-972c-7b6da90e7c1c",
                       "type": "str",
                       "isSysRef": false,
                       "name": "Flow.userId"
@@ -649,7 +727,7 @@
                     "pos": 1,
                     "text": "State.AgentIndex",
                     "type": "int",
-                    "val": "228ffae5-792d-42da-9f49-e815fbfff3cf"
+                    "val": "4569380b-5d64-4543-881f-a8d4a725c4f4"
                   }
                 },
                 "text": "State.AgentIndex",
@@ -660,7 +738,129 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "228ffae5-792d-42da-9f49-e815fbfff3cf",
+                      "id": "4569380b-5d64-4543-881f-a8d4a725c4f4",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.AgentIndex"
+                    }
+                  ]
+                },
+                "version": 2
+              }
+            },
+            {
+              "expression": {
+                "config": {
+                  "If": {
+                    "pos": 1,
+                    "operands": [
+                      {
+                        ">=": {
+                          "pos": 21,
+                          "operands": [
+                            {
+                              "ref": {
+                                "pos": 4,
+                                "text": "State.AgentIndex",
+                                "type": "int",
+                                "val": "4569380b-5d64-4543-881f-a8d4a725c4f4"
+                              }
+                            },
+                            {
+                              "lit": {
+                                "pos": 24,
+                                "text": "0",
+                                "type": "int"
+                              }
+                            }
+                          ],
+                          "type": "bln"
+                        }
+                      },
+                      {
+                        "ref": {
+                          "pos": 27,
+                          "text": "State.AgentIndex",
+                          "type": "int",
+                          "val": "4569380b-5d64-4543-881f-a8d4a725c4f4"
+                        }
+                      },
+                      {
+                        "FindFirst": {
+                          "pos": 45,
+                          "operands": [
+                            {
+                              "ref": {
+                                "pos": 55,
+                                "text": "State.connectedAgentParticipantIds",
+                                "type": "str_coll",
+                                "val": "2f099f90-6c61-4d2d-9992-9c13482a63d6"
+                              }
+                            },
+                            {
+                              "ref": {
+                                "pos": 91,
+                                "text": "Flow.participantId",
+                                "type": "str",
+                                "val": "15ec5e0a-bc7c-4c0b-9272-0d4a30c47091"
+                              }
+                            }
+                          ],
+                          "type": "int"
+                        }
+                      }
+                    ],
+                    "type": "int",
+                    "text": "If(State.AgentIndex >= 0, State.AgentIndex, FindFirst(State.connectedAgentParticipantIds, Flow.participantId))"
+                  }
+                },
+                "text": "If(State.AgentIndex >= 0, State.AgentIndex, FindFirst(State.connectedAgentParticipantIds, Flow.participantId))",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 0
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "4569380b-5d64-4543-881f-a8d4a725c4f4",
+                      "type": "int",
+                      "isSysRef": false,
+                      "name": "State.AgentIndex"
+                    },
+                    {
+                      "id": "2f099f90-6c61-4d2d-9992-9c13482a63d6",
+                      "type": "str_coll",
+                      "isSysRef": false,
+                      "name": "State.connectedAgentParticipantIds"
+                    },
+                    {
+                      "id": "15ec5e0a-bc7c-4c0b-9272-0d4a30c47091",
+                      "type": "str",
+                      "isSysRef": false,
+                      "name": "Flow.participantId"
+                    }
+                  ]
+                },
+                "version": 2
+              },
+              "variable": {
+                "config": {
+                  "ref": {
+                    "pos": 1,
+                    "text": "State.AgentIndex",
+                    "type": "int",
+                    "val": "4569380b-5d64-4543-881f-a8d4a725c4f4"
+                  }
+                },
+                "text": "State.AgentIndex",
+                "type": "int",
+                "uiMetaData": {
+                  "mode": 2
+                },
+                "metaData": {
+                  "references": [
+                    {
+                      "id": "4569380b-5d64-4543-881f-a8d4a725c4f4",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.AgentIndex"
@@ -671,11 +871,11 @@
               }
             }
           ],
-          "nextAction": "4d62a972-aa13-4183-91d9-d19ef169773f"
+          "nextAction": "280aa14d-c426-4bc8-879a-07ef9edc521b"
         },
         {
           "trackingId": 14,
-          "id": "2629aafb-0084-46b1-9e83-36dccc81f2d7",
+          "id": "0a04c369-e6e1-44e8-96d1-fb8b037a4c26",
           "name": "Still ringing - check again",
           "uiMetaData": {
             "collapsed": false
@@ -684,7 +884,7 @@
         },
         {
           "trackingId": 15,
-          "id": "c03f6d79-b992-4d3d-82b4-4d6fb8dcc4b6",
+          "id": "9a01e702-3e07-4158-8823-f58c5729a94a",
           "name": "Agent left the conversation",
           "uiMetaData": {
             "collapsed": false
@@ -693,7 +893,7 @@
         },
         {
           "trackingId": 16,
-          "id": "f29df85b-4301-4262-bdc4-aa04fcc098f9",
+          "id": "8ae8e765-9abc-40db-93b4-196748ecfaf5",
           "name": "Still alerting?",
           "uiMetaData": {
             "collapsed": false
@@ -701,46 +901,93 @@
           "__type": "DecisionAction",
           "expression": {
             "config": {
-              ">=": {
-                "pos": 52,
+              "or": {
+                "pos": 57,
                 "operands": [
                   {
-                    "FindFirst": {
-                      "pos": 1,
+                    ">=": {
+                      "pos": 52,
                       "operands": [
                         {
-                          "ref": {
-                            "pos": 11,
-                            "text": "State.alertingAgentUserIds",
-                            "type": "str_coll",
-                            "val": "175560f9-8ae7-405f-9357-cf5002075e38"
+                          "FindFirst": {
+                            "pos": 1,
+                            "operands": [
+                              {
+                                "ref": {
+                                  "pos": 11,
+                                  "text": "State.alertingAgentUserIds",
+                                  "type": "str_coll",
+                                  "val": "0d8e80c1-c335-4c9e-a9ab-f228297ee815"
+                                }
+                              },
+                              {
+                                "ref": {
+                                  "pos": 39,
+                                  "text": "Flow.userId",
+                                  "type": "str",
+                                  "val": "5600d71f-9790-499e-972c-7b6da90e7c1c"
+                                }
+                              }
+                            ],
+                            "type": "int"
                           }
                         },
                         {
-                          "ref": {
-                            "pos": 39,
-                            "text": "Flow.userId",
-                            "type": "str",
-                            "val": "dd839b7a-1336-4ea1-b0d5-68b2e95d0b68"
+                          "lit": {
+                            "pos": 55,
+                            "text": "0",
+                            "type": "int"
                           }
                         }
                       ],
-                      "type": "int"
+                      "type": "bln"
                     }
                   },
                   {
-                    "lit": {
-                      "pos": 55,
-                      "text": "0",
-                      "type": "int"
+                    ">=": {
+                      "pos": 125,
+                      "operands": [
+                        {
+                          "FindFirst": {
+                            "pos": 60,
+                            "operands": [
+                              {
+                                "ref": {
+                                  "pos": 70,
+                                  "text": "State.alertingAgentParticipantIds",
+                                  "type": "str_coll",
+                                  "val": "20ae8aca-4196-4c3d-94ad-79e960e014ab"
+                                }
+                              },
+                              {
+                                "ref": {
+                                  "pos": 105,
+                                  "text": "Flow.participantId",
+                                  "type": "str",
+                                  "val": "15ec5e0a-bc7c-4c0b-9272-0d4a30c47091"
+                                }
+                              }
+                            ],
+                            "type": "int"
+                          }
+                        },
+                        {
+                          "lit": {
+                            "pos": 128,
+                            "text": "0",
+                            "type": "int"
+                          }
+                        }
+                      ],
+                      "type": "bln"
                     }
                   }
                 ],
                 "type": "bln",
-                "text": "FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0"
+                "text": "FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0 or FindFirst(State.alertingAgentParticipantIds, Flow.participantId) >= 0"
               }
             },
-            "text": "FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0",
+            "text": "FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0 or FindFirst(State.alertingAgentParticipantIds, Flow.participantId) >= 0",
             "type": "bln",
             "uiMetaData": {
               "mode": 0
@@ -748,16 +995,28 @@
             "metaData": {
               "references": [
                 {
-                  "id": "175560f9-8ae7-405f-9357-cf5002075e38",
+                  "id": "0d8e80c1-c335-4c9e-a9ab-f228297ee815",
                   "type": "str_coll",
                   "isSysRef": false,
                   "name": "State.alertingAgentUserIds"
                 },
                 {
-                  "id": "dd839b7a-1336-4ea1-b0d5-68b2e95d0b68",
+                  "id": "5600d71f-9790-499e-972c-7b6da90e7c1c",
                   "type": "str",
                   "isSysRef": false,
                   "name": "Flow.userId"
+                },
+                {
+                  "id": "20ae8aca-4196-4c3d-94ad-79e960e014ab",
+                  "type": "str_coll",
+                  "isSysRef": false,
+                  "name": "State.alertingAgentParticipantIds"
+                },
+                {
+                  "id": "15ec5e0a-bc7c-4c0b-9272-0d4a30c47091",
+                  "type": "str",
+                  "isSysRef": false,
+                  "name": "Flow.participantId"
                 }
               ]
             },
@@ -770,7 +1029,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "2629aafb-0084-46b1-9e83-36dccc81f2d7"
+              "nextActionId": "0a04c369-e6e1-44e8-96d1-fb8b037a4c26"
             },
             {
               "label": "No",
@@ -778,13 +1037,13 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "c03f6d79-b992-4d3d-82b4-4d6fb8dcc4b6"
+              "nextActionId": "9a01e702-3e07-4158-8823-f58c5729a94a"
             }
           ]
         },
         {
           "trackingId": 17,
-          "id": "850caaa5-2e20-41f9-b0b6-e79063b10fd5",
+          "id": "dd853d0e-0dad-432a-8312-19f7a3561223",
           "name": "Compute idle time",
           "uiMetaData": {
             "collapsed": false
@@ -806,7 +1065,7 @@
                                 "pos": 12,
                                 "text": "State.connectedAgentTimes",
                                 "type": "str_coll",
-                                "val": "6d3f5189-56cf-485a-845e-412e8b6acff9"
+                                "val": "64307c55-0474-4f84-a52e-e0a87a3456fc"
                               }
                             },
                             {
@@ -814,7 +1073,7 @@
                                 "pos": 38,
                                 "text": "State.AgentIndex",
                                 "type": "int",
-                                "val": "228ffae5-792d-42da-9f49-e815fbfff3cf"
+                                "val": "4569380b-5d64-4543-881f-a8d4a725c4f4"
                               }
                             }
                           ],
@@ -834,13 +1093,13 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "6d3f5189-56cf-485a-845e-412e8b6acff9",
+                      "id": "64307c55-0474-4f84-a52e-e0a87a3456fc",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.connectedAgentTimes"
                     },
                     {
-                      "id": "228ffae5-792d-42da-9f49-e815fbfff3cf",
+                      "id": "4569380b-5d64-4543-881f-a8d4a725c4f4",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.AgentIndex"
@@ -855,7 +1114,7 @@
                     "pos": 1,
                     "text": "State.AgentConnectedTime",
                     "type": "dtm",
-                    "val": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0"
+                    "val": "a4319a00-b64b-4643-b810-ddbd8b93be9c"
                   }
                 },
                 "text": "State.AgentConnectedTime",
@@ -866,7 +1125,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0",
+                      "id": "a4319a00-b64b-4643-b810-ddbd8b93be9c",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.AgentConnectedTime"
@@ -891,7 +1150,7 @@
                                 "pos": 7,
                                 "text": "State.agentMessageTimes",
                                 "type": "str_coll",
-                                "val": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7"
+                                "val": "b9dafcc0-d2b9-47e1-bd59-788d5705676b"
                               }
                             }
                           ],
@@ -918,7 +1177,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7",
+                      "id": "b9dafcc0-d2b9-47e1-bd59-788d5705676b",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.agentMessageTimes"
@@ -933,7 +1192,7 @@
                     "pos": 1,
                     "text": "State.HasAgentMsg",
                     "type": "bln",
-                    "val": "3d12af12-7f25-495a-882c-83622f6d55f1"
+                    "val": "775450dc-ecb6-42a2-8612-9f86f900900c"
                   }
                 },
                 "text": "State.HasAgentMsg",
@@ -944,7 +1203,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "3d12af12-7f25-495a-882c-83622f6d55f1",
+                      "id": "775450dc-ecb6-42a2-8612-9f86f900900c",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.HasAgentMsg"
@@ -969,7 +1228,7 @@
                                 "pos": 7,
                                 "text": "State.customerMessageTimes",
                                 "type": "str_coll",
-                                "val": "63832a9f-c4fa-4452-be19-ca3b1116784a"
+                                "val": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309"
                               }
                             }
                           ],
@@ -996,7 +1255,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "63832a9f-c4fa-4452-be19-ca3b1116784a",
+                      "id": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.customerMessageTimes"
@@ -1011,7 +1270,7 @@
                     "pos": 1,
                     "text": "State.HasCustomerMsg",
                     "type": "bln",
-                    "val": "545db5f7-30f1-4bdc-b184-35d1b2eb6c03"
+                    "val": "2a142013-6327-4efb-b90e-9d74770d56f6"
                   }
                 },
                 "text": "State.HasCustomerMsg",
@@ -1022,7 +1281,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "545db5f7-30f1-4bdc-b184-35d1b2eb6c03",
+                      "id": "2a142013-6327-4efb-b90e-9d74770d56f6",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.HasCustomerMsg"
@@ -1043,7 +1302,7 @@
                           "pos": 4,
                           "text": "State.HasAgentMsg",
                           "type": "bln",
-                          "val": "3d12af12-7f25-495a-882c-83622f6d55f1"
+                          "val": "775450dc-ecb6-42a2-8612-9f86f900900c"
                         }
                       },
                       {
@@ -1059,7 +1318,7 @@
                                       "pos": 34,
                                       "text": "State.agentMessageTimes",
                                       "type": "str_coll",
-                                      "val": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7"
+                                      "val": "b9dafcc0-d2b9-47e1-bd59-788d5705676b"
                                     }
                                   },
                                   {
@@ -1075,7 +1334,7 @@
                                                   "pos": 64,
                                                   "text": "State.agentMessageTimes",
                                                   "type": "str_coll",
-                                                  "val": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7"
+                                                  "val": "b9dafcc0-d2b9-47e1-bd59-788d5705676b"
                                                 }
                                               }
                                             ],
@@ -1106,7 +1365,7 @@
                           "pos": 96,
                           "text": "State.AgentConnectedTime",
                           "type": "dtm",
-                          "val": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0"
+                          "val": "a4319a00-b64b-4643-b810-ddbd8b93be9c"
                         }
                       }
                     ],
@@ -1122,19 +1381,19 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "3d12af12-7f25-495a-882c-83622f6d55f1",
+                      "id": "775450dc-ecb6-42a2-8612-9f86f900900c",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.HasAgentMsg"
                     },
                     {
-                      "id": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7",
+                      "id": "b9dafcc0-d2b9-47e1-bd59-788d5705676b",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.agentMessageTimes"
                     },
                     {
-                      "id": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0",
+                      "id": "a4319a00-b64b-4643-b810-ddbd8b93be9c",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.AgentConnectedTime"
@@ -1149,7 +1408,7 @@
                     "pos": 1,
                     "text": "State.LastAgentMsg",
                     "type": "dtm",
-                    "val": "d097f0ae-1196-42e2-a23a-65f72f4d3044"
+                    "val": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc"
                   }
                 },
                 "text": "State.LastAgentMsg",
@@ -1160,7 +1419,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d097f0ae-1196-42e2-a23a-65f72f4d3044",
+                      "id": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.LastAgentMsg"
@@ -1181,7 +1440,7 @@
                           "pos": 4,
                           "text": "State.HasCustomerMsg",
                           "type": "bln",
-                          "val": "545db5f7-30f1-4bdc-b184-35d1b2eb6c03"
+                          "val": "2a142013-6327-4efb-b90e-9d74770d56f6"
                         }
                       },
                       {
@@ -1197,7 +1456,7 @@
                                       "pos": 37,
                                       "text": "State.customerMessageTimes",
                                       "type": "str_coll",
-                                      "val": "63832a9f-c4fa-4452-be19-ca3b1116784a"
+                                      "val": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309"
                                     }
                                   },
                                   {
@@ -1213,7 +1472,7 @@
                                                   "pos": 70,
                                                   "text": "State.customerMessageTimes",
                                                   "type": "str_coll",
-                                                  "val": "63832a9f-c4fa-4452-be19-ca3b1116784a"
+                                                  "val": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309"
                                                 }
                                               }
                                             ],
@@ -1244,7 +1503,7 @@
                           "pos": 105,
                           "text": "State.AgentConnectedTime",
                           "type": "dtm",
-                          "val": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0"
+                          "val": "a4319a00-b64b-4643-b810-ddbd8b93be9c"
                         }
                       }
                     ],
@@ -1260,19 +1519,19 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "545db5f7-30f1-4bdc-b184-35d1b2eb6c03",
+                      "id": "2a142013-6327-4efb-b90e-9d74770d56f6",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.HasCustomerMsg"
                     },
                     {
-                      "id": "63832a9f-c4fa-4452-be19-ca3b1116784a",
+                      "id": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.customerMessageTimes"
                     },
                     {
-                      "id": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0",
+                      "id": "a4319a00-b64b-4643-b810-ddbd8b93be9c",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.AgentConnectedTime"
@@ -1287,7 +1546,7 @@
                     "pos": 1,
                     "text": "State.LastCustomerMsg",
                     "type": "dtm",
-                    "val": "3dffe741-4b19-413f-b21a-4d05d312b0af"
+                    "val": "91420444-4705-41be-8c37-def6b6ecdc94"
                   }
                 },
                 "text": "State.LastCustomerMsg",
@@ -1298,7 +1557,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "3dffe741-4b19-413f-b21a-4d05d312b0af",
+                      "id": "91420444-4705-41be-8c37-def6b6ecdc94",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.LastCustomerMsg"
@@ -1323,7 +1582,7 @@
                                 "pos": 4,
                                 "text": "State.LastAgentMsg",
                                 "type": "dtm",
-                                "val": "d097f0ae-1196-42e2-a23a-65f72f4d3044"
+                                "val": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc"
                               }
                             },
                             {
@@ -1331,7 +1590,7 @@
                                 "pos": 25,
                                 "text": "State.AgentConnectedTime",
                                 "type": "dtm",
-                                "val": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0"
+                                "val": "a4319a00-b64b-4643-b810-ddbd8b93be9c"
                               }
                             }
                           ],
@@ -1343,7 +1602,7 @@
                           "pos": 51,
                           "text": "State.LastAgentMsg",
                           "type": "dtm",
-                          "val": "d097f0ae-1196-42e2-a23a-65f72f4d3044"
+                          "val": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc"
                         }
                       },
                       {
@@ -1351,7 +1610,7 @@
                           "pos": 71,
                           "text": "State.AgentConnectedTime",
                           "type": "dtm",
-                          "val": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0"
+                          "val": "a4319a00-b64b-4643-b810-ddbd8b93be9c"
                         }
                       }
                     ],
@@ -1367,13 +1626,13 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d097f0ae-1196-42e2-a23a-65f72f4d3044",
+                      "id": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.LastAgentMsg"
                     },
                     {
-                      "id": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0",
+                      "id": "a4319a00-b64b-4643-b810-ddbd8b93be9c",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.AgentConnectedTime"
@@ -1388,7 +1647,7 @@
                     "pos": 1,
                     "text": "State.IdleSince",
                     "type": "dtm",
-                    "val": "5d88c4cb-d657-418a-a71d-486d7eabfb57"
+                    "val": "54b6ab31-37ce-4e44-9dbc-24c6e88abba2"
                   }
                 },
                 "text": "State.IdleSince",
@@ -1399,7 +1658,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "5d88c4cb-d657-418a-a71d-486d7eabfb57",
+                      "id": "54b6ab31-37ce-4e44-9dbc-24c6e88abba2",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.IdleSince"
@@ -1439,7 +1698,7 @@
                                             "pos": 51,
                                             "text": "State.IdleSince",
                                             "type": "dtm",
-                                            "val": "5d88c4cb-d657-418a-a71d-486d7eabfb57"
+                                            "val": "54b6ab31-37ce-4e44-9dbc-24c6e88abba2"
                                           }
                                         }
                                       ],
@@ -1474,7 +1733,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "5d88c4cb-d657-418a-a71d-486d7eabfb57",
+                      "id": "54b6ab31-37ce-4e44-9dbc-24c6e88abba2",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.IdleSince"
@@ -1489,7 +1748,7 @@
                     "pos": 1,
                     "text": "State.IdleMinutes",
                     "type": "int",
-                    "val": "4103b062-8781-4ceb-891d-a329d8166a51"
+                    "val": "366e610c-d552-4898-b4bf-5effde837585"
                   }
                 },
                 "text": "State.IdleMinutes",
@@ -1500,7 +1759,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "4103b062-8781-4ceb-891d-a329d8166a51",
+                      "id": "366e610c-d552-4898-b4bf-5effde837585",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.IdleMinutes"
@@ -1521,7 +1780,7 @@
                           "pos": 1,
                           "text": "State.HasCustomerMsg",
                           "type": "bln",
-                          "val": "545db5f7-30f1-4bdc-b184-35d1b2eb6c03"
+                          "val": "2a142013-6327-4efb-b90e-9d74770d56f6"
                         }
                       },
                       {
@@ -1537,7 +1796,7 @@
                                       "pos": 28,
                                       "text": "State.HasAgentMsg",
                                       "type": "bln",
-                                      "val": "3d12af12-7f25-495a-882c-83622f6d55f1"
+                                      "val": "775450dc-ecb6-42a2-8612-9f86f900900c"
                                     }
                                   }
                                 ],
@@ -1553,7 +1812,7 @@
                                       "pos": 49,
                                       "text": "State.LastCustomerMsg",
                                       "type": "dtm",
-                                      "val": "3dffe741-4b19-413f-b21a-4d05d312b0af"
+                                      "val": "91420444-4705-41be-8c37-def6b6ecdc94"
                                     }
                                   },
                                   {
@@ -1561,7 +1820,7 @@
                                       "pos": 73,
                                       "text": "State.LastAgentMsg",
                                       "type": "dtm",
-                                      "val": "d097f0ae-1196-42e2-a23a-65f72f4d3044"
+                                      "val": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc"
                                     }
                                   }
                                 ],
@@ -1585,25 +1844,25 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "545db5f7-30f1-4bdc-b184-35d1b2eb6c03",
+                      "id": "2a142013-6327-4efb-b90e-9d74770d56f6",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.HasCustomerMsg"
                     },
                     {
-                      "id": "3d12af12-7f25-495a-882c-83622f6d55f1",
+                      "id": "775450dc-ecb6-42a2-8612-9f86f900900c",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.HasAgentMsg"
                     },
                     {
-                      "id": "3dffe741-4b19-413f-b21a-4d05d312b0af",
+                      "id": "91420444-4705-41be-8c37-def6b6ecdc94",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.LastCustomerMsg"
                     },
                     {
-                      "id": "d097f0ae-1196-42e2-a23a-65f72f4d3044",
+                      "id": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc",
                       "type": "dtm",
                       "isSysRef": false,
                       "name": "State.LastAgentMsg"
@@ -1618,7 +1877,7 @@
                     "pos": 1,
                     "text": "State.CustomerWaiting",
                     "type": "bln",
-                    "val": "ed0dfa31-fff9-4394-b8a7-9c4de88cf3d7"
+                    "val": "57a2e55a-40ee-467e-ba85-aa2c36ab4153"
                   }
                 },
                 "text": "State.CustomerWaiting",
@@ -1629,7 +1888,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "ed0dfa31-fff9-4394-b8a7-9c4de88cf3d7",
+                      "id": "57a2e55a-40ee-467e-ba85-aa2c36ab4153",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.CustomerWaiting"
@@ -1658,7 +1917,7 @@
                                       "pos": 10,
                                       "text": "State.customerParticipantIds",
                                       "type": "str_coll",
-                                      "val": "202c442b-23c2-4925-973f-0478f8cc99d8"
+                                      "val": "02135558-3549-4ef9-928c-b357de9bf39a"
                                     }
                                   }
                                 ],
@@ -1685,7 +1944,7 @@
                                 "pos": 45,
                                 "text": "State.customerParticipantIds",
                                 "type": "str_coll",
-                                "val": "202c442b-23c2-4925-973f-0478f8cc99d8"
+                                "val": "02135558-3549-4ef9-928c-b357de9bf39a"
                               }
                             },
                             {
@@ -1719,7 +1978,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "202c442b-23c2-4925-973f-0478f8cc99d8",
+                      "id": "02135558-3549-4ef9-928c-b357de9bf39a",
                       "type": "str_coll",
                       "isSysRef": false,
                       "name": "State.customerParticipantIds"
@@ -1734,7 +1993,7 @@
                     "pos": 1,
                     "text": "State.CustomerParticipantId",
                     "type": "str",
-                    "val": "9a532698-87cc-40e9-8065-5c384f939531"
+                    "val": "d0dc220f-60a0-4b30-85b1-fb20c9b9b360"
                   }
                 },
                 "text": "State.CustomerParticipantId",
@@ -1745,7 +2004,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "9a532698-87cc-40e9-8065-5c384f939531",
+                      "id": "d0dc220f-60a0-4b30-85b1-fb20c9b9b360",
                       "type": "str",
                       "isSysRef": false,
                       "name": "State.CustomerParticipantId"
@@ -1756,11 +2015,11 @@
               }
             }
           ],
-          "nextAction": "f1bbb425-0c90-4949-a72c-f6a725fe66de"
+          "nextAction": "fb3e4e1d-9d73-4f16-9353-d83e722337d6"
         },
         {
           "trackingId": 18,
-          "id": "212b5f59-b142-48be-9a2d-e026be315bf5",
+          "id": "42e7aa79-4949-46c5-bb0b-1c3baeed58ae",
           "name": "Mark alert raised",
           "uiMetaData": {
             "collapsed": false
@@ -1778,7 +2037,7 @@
                           "pos": 1,
                           "text": "State.Seq",
                           "type": "int",
-                          "val": "d6554f20-4e09-4d39-a423-d0c20a25753c"
+                          "val": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e"
                         }
                       },
                       {
@@ -1801,7 +2060,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d6554f20-4e09-4d39-a423-d0c20a25753c",
+                      "id": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Seq"
@@ -1816,7 +2075,7 @@
                     "pos": 1,
                     "text": "State.Seq",
                     "type": "int",
-                    "val": "d6554f20-4e09-4d39-a423-d0c20a25753c"
+                    "val": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e"
                   }
                 },
                 "text": "State.Seq",
@@ -1827,7 +2086,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d6554f20-4e09-4d39-a423-d0c20a25753c",
+                      "id": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Seq"
@@ -1860,7 +2119,7 @@
                     "pos": 1,
                     "text": "State.AlertActive",
                     "type": "bln",
-                    "val": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e"
+                    "val": "6b55167a-d563-4a11-9e3c-cfe67d00becd"
                   }
                 },
                 "text": "State.AlertActive",
@@ -1871,7 +2130,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e",
+                      "id": "6b55167a-d563-4a11-9e3c-cfe67d00becd",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.AlertActive"
@@ -1888,7 +2147,7 @@
                     "pos": 1,
                     "text": "State.IdleMinutes",
                     "type": "int",
-                    "val": "4103b062-8781-4ceb-891d-a329d8166a51"
+                    "val": "366e610c-d552-4898-b4bf-5effde837585"
                   }
                 },
                 "text": "State.IdleMinutes",
@@ -1899,7 +2158,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "4103b062-8781-4ceb-891d-a329d8166a51",
+                      "id": "366e610c-d552-4898-b4bf-5effde837585",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.IdleMinutes"
@@ -1914,7 +2173,7 @@
                     "pos": 1,
                     "text": "State.LastAlertMinutes",
                     "type": "int",
-                    "val": "16ec4a82-0321-403e-826b-53594503f88c"
+                    "val": "703d6232-24a7-46a4-b17c-12bd8c8a0e4f"
                   }
                 },
                 "text": "State.LastAlertMinutes",
@@ -1925,7 +2184,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "16ec4a82-0321-403e-826b-53594503f88c",
+                      "id": "703d6232-24a7-46a4-b17c-12bd8c8a0e4f",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.LastAlertMinutes"
@@ -1936,18 +2195,18 @@
               }
             }
           ],
-          "nextAction": "7b894402-59e6-4e01-9d51-86ec9e08d6ec"
+          "nextAction": "ed6ebd2a-fccd-4ead-8c4f-5413850be572"
         },
         {
           "trackingId": 19,
-          "id": "7b894402-59e6-4e01-9d51-86ec9e08d6ec",
+          "id": "ed6ebd2a-fccd-4ead-8c4f-5413850be572",
           "name": "Set IdleAlert = 1",
           "uiMetaData": {
             "collapsed": false
           },
           "__type": "DataAction",
           "actionName": "GC - Set Idle Alert Attributes",
-          "actionId": "custom_-_089b8192-5bf1-4b58-956c-b07777596eb1",
+          "actionId": "custom_-_9f672266-8aec-4bb6-bf41-9bd2e6467ff8",
           "category": {
             "id": "",
             "name": "Genesys Cloud Data Actions"
@@ -1963,7 +2222,7 @@
                     "pos": 1,
                     "text": "Flow.conversationId",
                     "type": "str",
-                    "val": "be224fe8-08e8-4825-adcb-f037ef458263"
+                    "val": "252c152a-3e9e-4dbe-b584-97b5bdc8d4f7"
                   }
                 },
                 "text": "Flow.conversationId",
@@ -1974,7 +2233,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "be224fe8-08e8-4825-adcb-f037ef458263",
+                      "id": "252c152a-3e9e-4dbe-b584-97b5bdc8d4f7",
                       "type": "str",
                       "isSysRef": false,
                       "name": "Flow.conversationId"
@@ -1992,7 +2251,7 @@
                     "pos": 1,
                     "text": "State.CustomerParticipantId",
                     "type": "str",
-                    "val": "9a532698-87cc-40e9-8065-5c384f939531"
+                    "val": "d0dc220f-60a0-4b30-85b1-fb20c9b9b360"
                   }
                 },
                 "text": "State.CustomerParticipantId",
@@ -2003,7 +2262,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "9a532698-87cc-40e9-8065-5c384f939531",
+                      "id": "d0dc220f-60a0-4b30-85b1-fb20c9b9b360",
                       "type": "str",
                       "isSysRef": false,
                       "name": "State.CustomerParticipantId"
@@ -2044,7 +2303,7 @@
                           "pos": 10,
                           "text": "State.IdleMinutes",
                           "type": "int",
-                          "val": "4103b062-8781-4ceb-891d-a329d8166a51"
+                          "val": "366e610c-d552-4898-b4bf-5effde837585"
                         }
                       }
                     ],
@@ -2060,7 +2319,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "4103b062-8781-4ceb-891d-a329d8166a51",
+                      "id": "366e610c-d552-4898-b4bf-5effde837585",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.IdleMinutes"
@@ -2082,7 +2341,7 @@
                           "pos": 10,
                           "text": "State.Seq",
                           "type": "int",
-                          "val": "d6554f20-4e09-4d39-a423-d0c20a25753c"
+                          "val": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e"
                         }
                       }
                     ],
@@ -2098,7 +2357,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d6554f20-4e09-4d39-a423-d0c20a25753c",
+                      "id": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Seq"
@@ -2152,7 +2411,7 @@
         },
         {
           "trackingId": 20,
-          "id": "6fe291ed-ac10-4599-b263-9b214d165d46",
+          "id": "9dba11f4-5aca-4578-a897-a02cf621f8a9",
           "name": "New alert or repeat due?",
           "uiMetaData": {
             "collapsed": false
@@ -2172,7 +2431,7 @@
                             "pos": 2,
                             "text": "State.AlertActive",
                             "type": "bln",
-                            "val": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e"
+                            "val": "6b55167a-d563-4a11-9e3c-cfe67d00becd"
                           }
                         }
                       ],
@@ -2192,7 +2451,7 @@
                                   "pos": 24,
                                   "text": "State.RepeatEveryMinutes",
                                   "type": "int",
-                                  "val": "a847b73e-d13c-48c7-b60f-e64b4aeabc67"
+                                  "val": "e2601503-1ede-41b1-960e-ff217e199996"
                                 }
                               },
                               {
@@ -2219,7 +2478,7 @@
                                         "pos": 57,
                                         "text": "State.IdleMinutes",
                                         "type": "int",
-                                        "val": "4103b062-8781-4ceb-891d-a329d8166a51"
+                                        "val": "366e610c-d552-4898-b4bf-5effde837585"
                                       }
                                     },
                                     {
@@ -2227,7 +2486,7 @@
                                         "pos": 77,
                                         "text": "State.LastAlertMinutes",
                                         "type": "int",
-                                        "val": "16ec4a82-0321-403e-826b-53594503f88c"
+                                        "val": "703d6232-24a7-46a4-b17c-12bd8c8a0e4f"
                                       }
                                     }
                                   ],
@@ -2239,7 +2498,7 @@
                                   "pos": 103,
                                   "text": "State.RepeatEveryMinutes",
                                   "type": "int",
-                                  "val": "a847b73e-d13c-48c7-b60f-e64b4aeabc67"
+                                  "val": "e2601503-1ede-41b1-960e-ff217e199996"
                                 }
                               }
                             ],
@@ -2263,25 +2522,25 @@
             "metaData": {
               "references": [
                 {
-                  "id": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e",
+                  "id": "6b55167a-d563-4a11-9e3c-cfe67d00becd",
                   "type": "bln",
                   "isSysRef": false,
                   "name": "State.AlertActive"
                 },
                 {
-                  "id": "a847b73e-d13c-48c7-b60f-e64b4aeabc67",
+                  "id": "e2601503-1ede-41b1-960e-ff217e199996",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.RepeatEveryMinutes"
                 },
                 {
-                  "id": "4103b062-8781-4ceb-891d-a329d8166a51",
+                  "id": "366e610c-d552-4898-b4bf-5effde837585",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.IdleMinutes"
                 },
                 {
-                  "id": "16ec4a82-0321-403e-826b-53594503f88c",
+                  "id": "703d6232-24a7-46a4-b17c-12bd8c8a0e4f",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.LastAlertMinutes"
@@ -2297,7 +2556,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "212b5f59-b142-48be-9a2d-e026be315bf5"
+              "nextActionId": "42e7aa79-4949-46c5-bb0b-1c3baeed58ae"
             },
             {
               "label": "No",
@@ -2310,7 +2569,7 @@
         },
         {
           "trackingId": 21,
-          "id": "5f468b05-5c22-4314-8c4c-2e7f952ed4c9",
+          "id": "bd3645c1-008f-480c-870c-25fd55c0fc05",
           "name": "Mark alert cleared",
           "uiMetaData": {
             "collapsed": false
@@ -2328,7 +2587,7 @@
                           "pos": 1,
                           "text": "State.Seq",
                           "type": "int",
-                          "val": "d6554f20-4e09-4d39-a423-d0c20a25753c"
+                          "val": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e"
                         }
                       },
                       {
@@ -2351,7 +2610,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d6554f20-4e09-4d39-a423-d0c20a25753c",
+                      "id": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Seq"
@@ -2366,7 +2625,7 @@
                     "pos": 1,
                     "text": "State.Seq",
                     "type": "int",
-                    "val": "d6554f20-4e09-4d39-a423-d0c20a25753c"
+                    "val": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e"
                   }
                 },
                 "text": "State.Seq",
@@ -2377,7 +2636,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d6554f20-4e09-4d39-a423-d0c20a25753c",
+                      "id": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Seq"
@@ -2410,7 +2669,7 @@
                     "pos": 1,
                     "text": "State.AlertActive",
                     "type": "bln",
-                    "val": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e"
+                    "val": "6b55167a-d563-4a11-9e3c-cfe67d00becd"
                   }
                 },
                 "text": "State.AlertActive",
@@ -2421,7 +2680,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e",
+                      "id": "6b55167a-d563-4a11-9e3c-cfe67d00becd",
                       "type": "bln",
                       "isSysRef": false,
                       "name": "State.AlertActive"
@@ -2454,7 +2713,7 @@
                     "pos": 1,
                     "text": "State.LastAlertMinutes",
                     "type": "int",
-                    "val": "16ec4a82-0321-403e-826b-53594503f88c"
+                    "val": "703d6232-24a7-46a4-b17c-12bd8c8a0e4f"
                   }
                 },
                 "text": "State.LastAlertMinutes",
@@ -2465,7 +2724,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "16ec4a82-0321-403e-826b-53594503f88c",
+                      "id": "703d6232-24a7-46a4-b17c-12bd8c8a0e4f",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.LastAlertMinutes"
@@ -2476,18 +2735,18 @@
               }
             }
           ],
-          "nextAction": "16b1edec-ea4d-4191-808f-876bc603e0d5"
+          "nextAction": "06178ff8-badc-4498-88df-690af128065f"
         },
         {
           "trackingId": 22,
-          "id": "16b1edec-ea4d-4191-808f-876bc603e0d5",
+          "id": "06178ff8-badc-4498-88df-690af128065f",
           "name": "Set IdleAlert = 0",
           "uiMetaData": {
             "collapsed": false
           },
           "__type": "DataAction",
           "actionName": "GC - Set Idle Alert Attributes",
-          "actionId": "custom_-_089b8192-5bf1-4b58-956c-b07777596eb1",
+          "actionId": "custom_-_9f672266-8aec-4bb6-bf41-9bd2e6467ff8",
           "category": {
             "id": "",
             "name": "Genesys Cloud Data Actions"
@@ -2503,7 +2762,7 @@
                     "pos": 1,
                     "text": "Flow.conversationId",
                     "type": "str",
-                    "val": "be224fe8-08e8-4825-adcb-f037ef458263"
+                    "val": "252c152a-3e9e-4dbe-b584-97b5bdc8d4f7"
                   }
                 },
                 "text": "Flow.conversationId",
@@ -2514,7 +2773,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "be224fe8-08e8-4825-adcb-f037ef458263",
+                      "id": "252c152a-3e9e-4dbe-b584-97b5bdc8d4f7",
                       "type": "str",
                       "isSysRef": false,
                       "name": "Flow.conversationId"
@@ -2532,7 +2791,7 @@
                     "pos": 1,
                     "text": "State.CustomerParticipantId",
                     "type": "str",
-                    "val": "9a532698-87cc-40e9-8065-5c384f939531"
+                    "val": "d0dc220f-60a0-4b30-85b1-fb20c9b9b360"
                   }
                 },
                 "text": "State.CustomerParticipantId",
@@ -2543,7 +2802,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "9a532698-87cc-40e9-8065-5c384f939531",
+                      "id": "d0dc220f-60a0-4b30-85b1-fb20c9b9b360",
                       "type": "str",
                       "isSysRef": false,
                       "name": "State.CustomerParticipantId"
@@ -2584,7 +2843,7 @@
                           "pos": 10,
                           "text": "State.IdleMinutes",
                           "type": "int",
-                          "val": "4103b062-8781-4ceb-891d-a329d8166a51"
+                          "val": "366e610c-d552-4898-b4bf-5effde837585"
                         }
                       }
                     ],
@@ -2600,7 +2859,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "4103b062-8781-4ceb-891d-a329d8166a51",
+                      "id": "366e610c-d552-4898-b4bf-5effde837585",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.IdleMinutes"
@@ -2622,7 +2881,7 @@
                           "pos": 10,
                           "text": "State.Seq",
                           "type": "int",
-                          "val": "d6554f20-4e09-4d39-a423-d0c20a25753c"
+                          "val": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e"
                         }
                       }
                     ],
@@ -2638,7 +2897,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "d6554f20-4e09-4d39-a423-d0c20a25753c",
+                      "id": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Seq"
@@ -2692,7 +2951,7 @@
         },
         {
           "trackingId": 23,
-          "id": "c87e8c04-89e2-4a68-b966-473b95d7a706",
+          "id": "9366c530-1e59-4f63-9e72-b93bb42fbb46",
           "name": "Clear active alert?",
           "uiMetaData": {
             "collapsed": false
@@ -2704,7 +2963,7 @@
                 "pos": 1,
                 "text": "State.AlertActive",
                 "type": "bln",
-                "val": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e"
+                "val": "6b55167a-d563-4a11-9e3c-cfe67d00becd"
               }
             },
             "text": "State.AlertActive",
@@ -2715,7 +2974,7 @@
             "metaData": {
               "references": [
                 {
-                  "id": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e",
+                  "id": "6b55167a-d563-4a11-9e3c-cfe67d00becd",
                   "type": "bln",
                   "isSysRef": false,
                   "name": "State.AlertActive"
@@ -2731,7 +2990,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "5f468b05-5c22-4314-8c4c-2e7f952ed4c9"
+              "nextActionId": "bd3645c1-008f-480c-870c-25fd55c0fc05"
             },
             {
               "label": "No",
@@ -2744,7 +3003,7 @@
         },
         {
           "trackingId": 24,
-          "id": "f1bbb425-0c90-4949-a72c-f6a725fe66de",
+          "id": "fb3e4e1d-9d73-4f16-9353-d83e722337d6",
           "name": "Idle beyond threshold?",
           "uiMetaData": {
             "collapsed": false
@@ -2764,7 +3023,7 @@
                             "pos": 2,
                             "text": "State.IdleMinutes",
                             "type": "int",
-                            "val": "4103b062-8781-4ceb-891d-a329d8166a51"
+                            "val": "366e610c-d552-4898-b4bf-5effde837585"
                           }
                         },
                         {
@@ -2772,7 +3031,7 @@
                             "pos": 23,
                             "text": "State.ThresholdMinutes",
                             "type": "int",
-                            "val": "f60bcbd8-fa9a-42fc-83b1-b3aacaeaae45"
+                            "val": "9bc02aed-bab6-4df7-b5fb-f7bdd915d355"
                           }
                         }
                       ],
@@ -2788,7 +3047,7 @@
                             "pos": 52,
                             "text": "State.CustomerWaiting",
                             "type": "bln",
-                            "val": "ed0dfa31-fff9-4394-b8a7-9c4de88cf3d7"
+                            "val": "57a2e55a-40ee-467e-ba85-aa2c36ab4153"
                           }
                         },
                         {
@@ -2800,7 +3059,7 @@
                                   "pos": 78,
                                   "text": "State.OnlyWhenCustomerWaiting",
                                   "type": "bln",
-                                  "val": "5c7616ca-125f-49e1-9550-c93b4095c103"
+                                  "val": "40958f91-fdf1-4abd-baa2-886bdce77c20"
                                 }
                               }
                             ],
@@ -2824,25 +3083,25 @@
             "metaData": {
               "references": [
                 {
-                  "id": "4103b062-8781-4ceb-891d-a329d8166a51",
+                  "id": "366e610c-d552-4898-b4bf-5effde837585",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.IdleMinutes"
                 },
                 {
-                  "id": "f60bcbd8-fa9a-42fc-83b1-b3aacaeaae45",
+                  "id": "9bc02aed-bab6-4df7-b5fb-f7bdd915d355",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.ThresholdMinutes"
                 },
                 {
-                  "id": "ed0dfa31-fff9-4394-b8a7-9c4de88cf3d7",
+                  "id": "57a2e55a-40ee-467e-ba85-aa2c36ab4153",
                   "type": "bln",
                   "isSysRef": false,
                   "name": "State.CustomerWaiting"
                 },
                 {
-                  "id": "5c7616ca-125f-49e1-9550-c93b4095c103",
+                  "id": "40958f91-fdf1-4abd-baa2-886bdce77c20",
                   "type": "bln",
                   "isSysRef": false,
                   "name": "State.OnlyWhenCustomerWaiting"
@@ -2858,7 +3117,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "6fe291ed-ac10-4599-b263-9b214d165d46"
+              "nextActionId": "9dba11f4-5aca-4578-a897-a02cf621f8a9"
             },
             {
               "label": "No",
@@ -2866,13 +3125,13 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "c87e8c04-89e2-4a68-b966-473b95d7a706"
+              "nextActionId": "9366c530-1e59-4f63-9e72-b93bb42fbb46"
             }
           ]
         },
         {
           "trackingId": 25,
-          "id": "4d62a972-aa13-4183-91d9-d19ef169773f",
+          "id": "280aa14d-c426-4bc8-879a-07ef9edc521b",
           "name": "Agent still connected?",
           "uiMetaData": {
             "collapsed": false
@@ -2888,7 +3147,7 @@
                       "pos": 1,
                       "text": "State.AgentIndex",
                       "type": "int",
-                      "val": "228ffae5-792d-42da-9f49-e815fbfff3cf"
+                      "val": "4569380b-5d64-4543-881f-a8d4a725c4f4"
                     }
                   },
                   {
@@ -2911,7 +3170,7 @@
             "metaData": {
               "references": [
                 {
-                  "id": "228ffae5-792d-42da-9f49-e815fbfff3cf",
+                  "id": "4569380b-5d64-4543-881f-a8d4a725c4f4",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.AgentIndex"
@@ -2927,7 +3186,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "850caaa5-2e20-41f9-b0b6-e79063b10fd5"
+              "nextActionId": "dd853d0e-0dad-432a-8312-19f7a3561223"
             },
             {
               "label": "No",
@@ -2935,13 +3194,13 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "f29df85b-4301-4262-bdc4-aa04fcc098f9"
+              "nextActionId": "8ae8e765-9abc-40db-93b4-196748ecfaf5"
             }
           ]
         },
         {
           "trackingId": 26,
-          "id": "b5a95d22-7163-42b4-91d2-dcf0903d16ab",
+          "id": "8eab1cd8-10a2-4eb8-b47a-53384226f488",
           "name": "Count failure",
           "uiMetaData": {
             "collapsed": false
@@ -2959,7 +3218,7 @@
                           "pos": 1,
                           "text": "State.Failures",
                           "type": "int",
-                          "val": "2800bf68-35e9-4ff1-a70c-ecc49176e261"
+                          "val": "997cebc9-e44e-47ca-91de-8c58c8767992"
                         }
                       },
                       {
@@ -2982,7 +3241,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "2800bf68-35e9-4ff1-a70c-ecc49176e261",
+                      "id": "997cebc9-e44e-47ca-91de-8c58c8767992",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Failures"
@@ -2997,7 +3256,7 @@
                     "pos": 1,
                     "text": "State.Failures",
                     "type": "int",
-                    "val": "2800bf68-35e9-4ff1-a70c-ecc49176e261"
+                    "val": "997cebc9-e44e-47ca-91de-8c58c8767992"
                   }
                 },
                 "text": "State.Failures",
@@ -3008,7 +3267,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "2800bf68-35e9-4ff1-a70c-ecc49176e261",
+                      "id": "997cebc9-e44e-47ca-91de-8c58c8767992",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Failures"
@@ -3019,11 +3278,11 @@
               }
             }
           ],
-          "nextAction": "6e28324b-622e-4f99-898d-f40f7a49636b"
+          "nextAction": "7865655f-dd91-4511-9ed4-ef2acb578062"
         },
         {
           "trackingId": 27,
-          "id": "63ba2024-f9a3-411f-9e7d-78fb624d9ba3",
+          "id": "4115d9e8-aab8-4e81-aa04-b837ae7c1a56",
           "name": "Give up after repeated failures",
           "uiMetaData": {
             "collapsed": false
@@ -3032,7 +3291,7 @@
         },
         {
           "trackingId": 28,
-          "id": "d89cd2cb-0ee3-4632-8c45-3bc4ad19d999",
+          "id": "57347099-eba1-474e-8525-efde56fd6b4a",
           "name": "Try again next minute",
           "uiMetaData": {
             "collapsed": false
@@ -3041,7 +3300,7 @@
         },
         {
           "trackingId": 29,
-          "id": "6e28324b-622e-4f99-898d-f40f7a49636b",
+          "id": "7865655f-dd91-4511-9ed4-ef2acb578062",
           "name": "Too many failures?",
           "uiMetaData": {
             "collapsed": false
@@ -3057,7 +3316,7 @@
                       "pos": 1,
                       "text": "State.Failures",
                       "type": "int",
-                      "val": "2800bf68-35e9-4ff1-a70c-ecc49176e261"
+                      "val": "997cebc9-e44e-47ca-91de-8c58c8767992"
                     }
                   },
                   {
@@ -3080,7 +3339,7 @@
             "metaData": {
               "references": [
                 {
-                  "id": "2800bf68-35e9-4ff1-a70c-ecc49176e261",
+                  "id": "997cebc9-e44e-47ca-91de-8c58c8767992",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.Failures"
@@ -3096,7 +3355,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "63ba2024-f9a3-411f-9e7d-78fb624d9ba3"
+              "nextActionId": "4115d9e8-aab8-4e81-aa04-b837ae7c1a56"
             },
             {
               "label": "No",
@@ -3104,13 +3363,13 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "d89cd2cb-0ee3-4632-8c45-3bc4ad19d999"
+              "nextActionId": "57347099-eba1-474e-8525-efde56fd6b4a"
             }
           ]
         },
         {
           "trackingId": 30,
-          "id": "68ed56ee-7f71-4b28-a811-c7c4a07ba41f",
+          "id": "c4378d1a-de87-4651-88b8-c007942ea178",
           "name": "Count failure",
           "uiMetaData": {
             "collapsed": false
@@ -3128,7 +3387,7 @@
                           "pos": 1,
                           "text": "State.Failures",
                           "type": "int",
-                          "val": "2800bf68-35e9-4ff1-a70c-ecc49176e261"
+                          "val": "997cebc9-e44e-47ca-91de-8c58c8767992"
                         }
                       },
                       {
@@ -3151,7 +3410,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "2800bf68-35e9-4ff1-a70c-ecc49176e261",
+                      "id": "997cebc9-e44e-47ca-91de-8c58c8767992",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Failures"
@@ -3166,7 +3425,7 @@
                     "pos": 1,
                     "text": "State.Failures",
                     "type": "int",
-                    "val": "2800bf68-35e9-4ff1-a70c-ecc49176e261"
+                    "val": "997cebc9-e44e-47ca-91de-8c58c8767992"
                   }
                 },
                 "text": "State.Failures",
@@ -3177,7 +3436,7 @@
                 "metaData": {
                   "references": [
                     {
-                      "id": "2800bf68-35e9-4ff1-a70c-ecc49176e261",
+                      "id": "997cebc9-e44e-47ca-91de-8c58c8767992",
                       "type": "int",
                       "isSysRef": false,
                       "name": "State.Failures"
@@ -3188,11 +3447,11 @@
               }
             }
           ],
-          "nextAction": "acd04edc-9a51-4041-b599-abe8ca668a4b"
+          "nextAction": "b31c6dd1-b8b4-4e64-b66f-3d2a90b3f50c"
         },
         {
           "trackingId": 31,
-          "id": "f9260319-e669-46a9-a021-043cd1b8c244",
+          "id": "57bc8128-55d7-4ba5-934d-dafd1669efb6",
           "name": "Give up after repeated failures",
           "uiMetaData": {
             "collapsed": false
@@ -3201,7 +3460,7 @@
         },
         {
           "trackingId": 32,
-          "id": "6c98b1bc-32df-4a5d-baef-35908ba9a42e",
+          "id": "6490d0bd-6ad0-4288-8a21-76b45cc71b42",
           "name": "Try again next minute",
           "uiMetaData": {
             "collapsed": false
@@ -3210,7 +3469,7 @@
         },
         {
           "trackingId": 33,
-          "id": "acd04edc-9a51-4041-b599-abe8ca668a4b",
+          "id": "b31c6dd1-b8b4-4e64-b66f-3d2a90b3f50c",
           "name": "Too many failures?",
           "uiMetaData": {
             "collapsed": false
@@ -3226,7 +3485,7 @@
                       "pos": 1,
                       "text": "State.Failures",
                       "type": "int",
-                      "val": "2800bf68-35e9-4ff1-a70c-ecc49176e261"
+                      "val": "997cebc9-e44e-47ca-91de-8c58c8767992"
                     }
                   },
                   {
@@ -3249,7 +3508,7 @@
             "metaData": {
               "references": [
                 {
-                  "id": "2800bf68-35e9-4ff1-a70c-ecc49176e261",
+                  "id": "997cebc9-e44e-47ca-91de-8c58c8767992",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.Failures"
@@ -3265,7 +3524,7 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "f9260319-e669-46a9-a021-043cd1b8c244"
+              "nextActionId": "57bc8128-55d7-4ba5-934d-dafd1669efb6"
             },
             {
               "label": "No",
@@ -3273,13 +3532,13 @@
               "uiMetaData": {
                 "collapsed": false
               },
-              "nextActionId": "6c98b1bc-32df-4a5d-baef-35908ba9a42e"
+              "nextActionId": "6490d0bd-6ad0-4288-8a21-76b45cc71b42"
             }
           ]
         },
         {
           "trackingId": 34,
-          "id": "d0eda7a3-a054-407d-8ad8-8e9d6ead2ebd",
+          "id": "2f0d243b-8eff-42e5-8a7d-3359df0b4003",
           "name": "End Workflow",
           "uiMetaData": {
             "collapsed": false
@@ -3304,7 +3563,7 @@
         },
         {
           "trackingId": 35,
-          "id": "f5e76994-eff5-43e1-add7-ec57d65471ad",
+          "id": "81ce99fe-eb58-4f69-aa12-f93491501a67",
           "name": "Poll every minute",
           "uiMetaData": {
             "collapsed": false
@@ -3316,7 +3575,7 @@
                 "pos": 1,
                 "text": "State.PollIndex",
                 "type": "int",
-                "val": "29c866f4-0c6c-4f5d-98fa-f4c5dbbe2bdd"
+                "val": "a2eb5f5d-4f33-4117-b786-bf96bfcb528f"
               }
             },
             "text": "State.PollIndex",
@@ -3327,7 +3586,7 @@
             "metaData": {
               "references": [
                 {
-                  "id": "29c866f4-0c6c-4f5d-98fa-f4c5dbbe2bdd",
+                  "id": "a2eb5f5d-4f33-4117-b786-bf96bfcb528f",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.PollIndex"
@@ -3342,7 +3601,7 @@
                 "pos": 1,
                 "text": "State.MaxPolls",
                 "type": "int",
-                "val": "7947c91f-5ea9-4f11-9f8b-51713c6d9fa4"
+                "val": "161f7fb6-4691-42c5-9665-01d894b82716"
               }
             },
             "text": "State.MaxPolls",
@@ -3353,7 +3612,7 @@
             "metaData": {
               "references": [
                 {
-                  "id": "7947c91f-5ea9-4f11-9f8b-51713c6d9fa4",
+                  "id": "161f7fb6-4691-42c5-9665-01d894b82716",
                   "type": "int",
                   "isSysRef": false,
                   "name": "State.MaxPolls"
@@ -3363,19 +3622,19 @@
             "version": 2
           },
           "path": {
-            "nextActionId": "9f823cee-b247-4fd2-9ffb-2753ff97dcac",
+            "nextActionId": "8552142e-f804-44f5-a4b3-b088728af7b5",
             "label": "Loop",
             "outputId": "__LOOP__",
             "uiMetaData": {
               "collapsed": false
             }
           },
-          "nextAction": "d0eda7a3-a054-407d-8ad8-8e9d6ead2ebd"
+          "nextAction": "2f0d243b-8eff-42e5-8a7d-3359df0b4003"
         }
       ],
       "variables": [
         {
-          "id": "f60bcbd8-fa9a-42fc-83b1-b3aacaeaae45",
+          "id": "9bc02aed-bab6-4df7-b5fb-f7bdd915d355",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3403,7 +3662,7 @@
           }
         },
         {
-          "id": "a847b73e-d13c-48c7-b60f-e64b4aeabc67",
+          "id": "e2601503-1ede-41b1-960e-ff217e199996",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3431,7 +3690,7 @@
           }
         },
         {
-          "id": "5c7616ca-125f-49e1-9550-c93b4095c103",
+          "id": "40958f91-fdf1-4abd-baa2-886bdce77c20",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3459,7 +3718,7 @@
           }
         },
         {
-          "id": "7947c91f-5ea9-4f11-9f8b-51713c6d9fa4",
+          "id": "161f7fb6-4691-42c5-9665-01d894b82716",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3487,7 +3746,7 @@
           }
         },
         {
-          "id": "d6554f20-4e09-4d39-a423-d0c20a25753c",
+          "id": "8564fcff-bbc1-44ac-b7cd-6f6ea2e5423e",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3515,7 +3774,7 @@
           }
         },
         {
-          "id": "16ec4a82-0321-403e-826b-53594503f88c",
+          "id": "703d6232-24a7-46a4-b17c-12bd8c8a0e4f",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3543,7 +3802,7 @@
           }
         },
         {
-          "id": "2800bf68-35e9-4ff1-a70c-ecc49176e261",
+          "id": "997cebc9-e44e-47ca-91de-8c58c8767992",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3571,7 +3830,7 @@
           }
         },
         {
-          "id": "228ffae5-792d-42da-9f49-e815fbfff3cf",
+          "id": "4569380b-5d64-4543-881f-a8d4a725c4f4",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3599,7 +3858,7 @@
           }
         },
         {
-          "id": "4103b062-8781-4ceb-891d-a329d8166a51",
+          "id": "366e610c-d552-4898-b4bf-5effde837585",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3627,7 +3886,7 @@
           }
         },
         {
-          "id": "29c866f4-0c6c-4f5d-98fa-f4c5dbbe2bdd",
+          "id": "a2eb5f5d-4f33-4117-b786-bf96bfcb528f",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3655,7 +3914,7 @@
           }
         },
         {
-          "id": "cdccab3c-35f3-4d55-adb4-6afcf3b0382e",
+          "id": "6b55167a-d563-4a11-9e3c-cfe67d00becd",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3683,7 +3942,7 @@
           }
         },
         {
-          "id": "3d12af12-7f25-495a-882c-83622f6d55f1",
+          "id": "775450dc-ecb6-42a2-8612-9f86f900900c",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3711,7 +3970,7 @@
           }
         },
         {
-          "id": "545db5f7-30f1-4bdc-b184-35d1b2eb6c03",
+          "id": "2a142013-6327-4efb-b90e-9d74770d56f6",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3739,7 +3998,7 @@
           }
         },
         {
-          "id": "ed0dfa31-fff9-4394-b8a7-9c4de88cf3d7",
+          "id": "57a2e55a-40ee-467e-ba85-aa2c36ab4153",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3767,7 +4026,7 @@
           }
         },
         {
-          "id": "8f0a995d-8a56-432f-95d7-c5bc33c2e6a0",
+          "id": "a4319a00-b64b-4643-b810-ddbd8b93be9c",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3795,7 +4054,7 @@
           }
         },
         {
-          "id": "d097f0ae-1196-42e2-a23a-65f72f4d3044",
+          "id": "45a2fe16-0c16-41ee-9ab6-83067f8d89dc",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3823,7 +4082,7 @@
           }
         },
         {
-          "id": "3dffe741-4b19-413f-b21a-4d05d312b0af",
+          "id": "91420444-4705-41be-8c37-def6b6ecdc94",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3851,7 +4110,7 @@
           }
         },
         {
-          "id": "5d88c4cb-d657-418a-a71d-486d7eabfb57",
+          "id": "54b6ab31-37ce-4e44-9dbc-24c6e88abba2",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3879,7 +4138,7 @@
           }
         },
         {
-          "id": "9a532698-87cc-40e9-8065-5c384f939531",
+          "id": "d0dc220f-60a0-4b30-85b1-fb20c9b9b360",
           "isCollection": false,
           "isInternal": false,
           "isOutput": false,
@@ -3907,7 +4166,7 @@
           }
         },
         {
-          "id": "202c442b-23c2-4925-973f-0478f8cc99d8",
+          "id": "02135558-3549-4ef9-928c-b357de9bf39a",
           "isCollection": true,
           "isInternal": false,
           "isOutput": false,
@@ -3935,7 +4194,7 @@
           }
         },
         {
-          "id": "63832a9f-c4fa-4452-be19-ca3b1116784a",
+          "id": "af043fdb-b5bb-4ec7-a2ed-73fc94ada309",
           "isCollection": true,
           "isInternal": false,
           "isOutput": false,
@@ -3963,7 +4222,7 @@
           }
         },
         {
-          "id": "3b9f94e0-2ac1-419c-8e4a-71efd7f2bdb7",
+          "id": "b9dafcc0-d2b9-47e1-bd59-788d5705676b",
           "isCollection": true,
           "isInternal": false,
           "isOutput": false,
@@ -3991,7 +4250,7 @@
           }
         },
         {
-          "id": "486aa5ba-51c8-4346-954d-ceb2fa6f9fb9",
+          "id": "5189c715-527a-4ffe-9d50-fae197a1dae6",
           "isCollection": true,
           "isInternal": false,
           "isOutput": false,
@@ -4019,7 +4278,35 @@
           }
         },
         {
-          "id": "6d3f5189-56cf-485a-845e-412e8b6acff9",
+          "id": "2f099f90-6c61-4d2d-9992-9c13482a63d6",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.connectedAgentParticipantIds",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "64307c55-0474-4f84-a52e-e0a87a3456fc",
           "isCollection": true,
           "isInternal": false,
           "isOutput": false,
@@ -4047,7 +4334,7 @@
           }
         },
         {
-          "id": "175560f9-8ae7-405f-9357-cf5002075e38",
+          "id": "0d8e80c1-c335-4c9e-a9ab-f228297ee815",
           "isCollection": true,
           "isInternal": false,
           "isOutput": false,
@@ -4056,6 +4343,34 @@
           "version": "1.0",
           "__type": "StringVariable",
           "name": "State.alertingAgentUserIds",
+          "description": "Output of GC - Get Message Conversation Activity",
+          "initialValue": {
+            "config": {
+              "emp": {
+                "pos": 1,
+                "text": "",
+                "type": "str_coll"
+              }
+            },
+            "text": "",
+            "type": "str_coll",
+            "uiMetaData": {
+              "mode": 3
+            },
+            "metaData": {},
+            "version": 2
+          }
+        },
+        {
+          "id": "20ae8aca-4196-4c3d-94ad-79e960e014ab",
+          "isCollection": true,
+          "isInternal": false,
+          "isOutput": false,
+          "isInput": false,
+          "isSecure": false,
+          "version": "1.0",
+          "__type": "StringVariable",
+          "name": "State.alertingAgentParticipantIds",
           "description": "Output of GC - Get Message Conversation Activity",
           "initialValue": {
             "config": {
@@ -4084,7 +4399,7 @@
   ],
   "variables": [
     {
-      "id": "be224fe8-08e8-4825-adcb-f037ef458263",
+      "id": "252c152a-3e9e-4dbe-b584-97b5bdc8d4f7",
       "isCollection": false,
       "isInternal": false,
       "isOutput": false,
@@ -4112,7 +4427,7 @@
       }
     },
     {
-      "id": "a2f16a59-da5c-4197-9922-292f9a3e7309",
+      "id": "15ec5e0a-bc7c-4c0b-9272-0d4a30c47091",
       "isCollection": false,
       "isInternal": false,
       "isOutput": false,
@@ -4140,7 +4455,7 @@
       }
     },
     {
-      "id": "dd839b7a-1336-4ea1-b0d5-68b2e95d0b68",
+      "id": "5600d71f-9790-499e-972c-7b6da90e7c1c",
       "isCollection": false,
       "isInternal": false,
       "isOutput": false,
@@ -4168,7 +4483,7 @@
       }
     },
     {
-      "id": "cde398ff-155b-4c5d-b347-ec46a368b6d1",
+      "id": "3e5622f9-b370-4a36-8051-e42052c2febe",
       "isCollection": false,
       "isInternal": false,
       "isOutput": false,
@@ -4196,7 +4511,7 @@
       }
     },
     {
-      "id": "08555f19-4d62-4282-82d8-954e6fb6df26",
+      "id": "e26161e7-ec02-4d0d-aa98-a2fb56867f23",
       "isCollection": false,
       "isInternal": false,
       "isOutput": false,

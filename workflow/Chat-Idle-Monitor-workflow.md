@@ -45,7 +45,10 @@ what the imported file does. No Archy, Terraform or external services are needed
    *Conversation > Communication > Edit*).
 2. Import the two data actions from `data-actions/` (Admin > Integrations > Actions >
    **Import**), then **Save & Publish** each. Test the GET one with a real conversation ID
-   from a finished web messaging interaction and confirm the arrays come back populated.
+   from a web messaging interaction **while an agent is connected to it** and confirm
+   `connectedAgentUserIds` (or `connectedAgentParticipantIds`) is not empty. The messaging
+   conversation API nests the agent as `user.id`; the generic conversation API's flat `userId`
+   does not exist here.
 
 ---
 
@@ -84,7 +87,8 @@ Workflows run inside a *State*, so its local variables use the `State.` prefix.
 
 Data-action outputs (String **collections**):
 `State.customerParticipantIds`, `State.customerMessageTimes`, `State.agentMessageTimes`,
-`State.connectedAgentUserIds`, `State.connectedAgentTimes`, `State.alertingAgentUserIds`
+`State.connectedAgentUserIds`, `State.connectedAgentParticipantIds`, `State.connectedAgentTimes`,
+`State.alertingAgentUserIds`, `State.alertingAgentParticipantIds`
 
 ---
 
@@ -100,8 +104,9 @@ Start
    │     Failure path: Update Data State.Failures = State.Failures + 1
    │                   Decision State.Failures >= 5 ? Exit Loop : Next Loop
    ├─ Update Data          State.AgentIndex = FindFirst(State.connectedAgentUserIds, Flow.userId)
+   │                        State.AgentIndex = If(State.AgentIndex >= 0, State.AgentIndex, FindFirst(State.connectedAgentParticipantIds, Flow.participantId))
    ├─ Decision  "Agent still connected?"   State.AgentIndex >= 0
-   │     No  ─ Decision "Still alerting?"  FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0
+   │     No  ─ Decision "Still alerting?"  FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0 or FindFirst(State.alertingAgentParticipantIds, Flow.participantId) >= 0
    │             Yes -> Next Loop        (agent has not accepted yet)
    │             No  -> Exit Loop        (agent disconnected / transferred / chat ended)
    │     Yes ─ continue

@@ -14,19 +14,23 @@
         "customerParticipantIds": "$.participants[?(@.purpose=='customer')].id",
         "customerMessageTimes": "$.participants[?(@.purpose=='customer')].messages[-30:].messageTime",
         "agentMessageTimes": "$.participants[?(@.purpose=='agent')].messages[-30:].messageTime",
-        "connectedAgentUserIds": "$.participants[?(@.purpose=='agent' && @.state=='connected')].userId",
+        "connectedAgentUserIds": "$.participants[?(@.purpose=='agent' && @.state=='connected')].user.id",
+        "connectedAgentParticipantIds": "$.participants[?(@.purpose=='agent' && @.state=='connected')].id",
         "connectedAgentTimes": "$.participants[?(@.purpose=='agent' && @.state=='connected')].connectedTime",
-        "alertingAgentUserIds": "$.participants[?(@.purpose=='agent' && @.state=='alerting')].userId"
+        "alertingAgentUserIds": "$.participants[?(@.purpose=='agent' && @.state=='alerting')].user.id",
+        "alertingAgentParticipantIds": "$.participants[?(@.purpose=='agent' && @.state=='alerting')].id"
       },
       "translationMapDefaults": {
         "customerParticipantIds": "[]",
         "customerMessageTimes": "[]",
         "agentMessageTimes": "[]",
         "connectedAgentUserIds": "[]",
+        "connectedAgentParticipantIds": "[]",
         "connectedAgentTimes": "[]",
-        "alertingAgentUserIds": "[]"
+        "alertingAgentUserIds": "[]",
+        "alertingAgentParticipantIds": "[]"
       },
-      "successTemplate": "{\"customerParticipantIds\": ${customerParticipantIds}, \"customerMessageTimes\": ${customerMessageTimes}, \"agentMessageTimes\": ${agentMessageTimes}, \"connectedAgentUserIds\": ${connectedAgentUserIds}, \"connectedAgentTimes\": ${connectedAgentTimes}, \"alertingAgentUserIds\": ${alertingAgentUserIds}}"
+      "successTemplate": "{\"customerParticipantIds\": ${customerParticipantIds}, \"customerMessageTimes\": ${customerMessageTimes}, \"agentMessageTimes\": ${agentMessageTimes}, \"connectedAgentUserIds\": ${connectedAgentUserIds}, \"connectedAgentParticipantIds\": ${connectedAgentParticipantIds}, \"connectedAgentTimes\": ${connectedAgentTimes}, \"alertingAgentUserIds\": ${alertingAgentUserIds}, \"alertingAgentParticipantIds\": ${alertingAgentParticipantIds}}"
     }
   },
   "contract": {
@@ -35,7 +39,9 @@
         "$schema": "http://json-schema.org/draft-04/schema#",
         "title": "Get Message Conversation Activity",
         "type": "object",
-        "required": ["conversationId"],
+        "required": [
+          "conversationId"
+        ],
         "properties": {
           "conversationId": {
             "type": "string",
@@ -51,12 +57,54 @@
         "title": "Message Conversation Activity",
         "type": "object",
         "properties": {
-          "customerParticipantIds": { "type": "array", "items": { "type": "string" } },
-          "customerMessageTimes": { "type": "array", "items": { "type": "string" } },
-          "agentMessageTimes": { "type": "array", "items": { "type": "string" } },
-          "connectedAgentUserIds": { "type": "array", "items": { "type": "string" } },
-          "connectedAgentTimes": { "type": "array", "items": { "type": "string" } },
-          "alertingAgentUserIds": { "type": "array", "items": { "type": "string" } }
+          "customerParticipantIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "customerMessageTimes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "agentMessageTimes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "connectedAgentUserIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "connectedAgentParticipantIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "connectedAgentTimes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "alertingAgentUserIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "alertingAgentParticipantIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         },
         "additionalProperties": true
       }

@@ -297,7 +297,8 @@ def chain(*actions):
 GET_NAME = "GC - Get Message Conversation Activity"
 SET_NAME = "GC - Set Idle Alert Attributes"
 GET_OUTPUTS = ["customerParticipantIds", "customerMessageTimes", "agentMessageTimes",
-               "connectedAgentUserIds", "connectedAgentTimes", "alertingAgentUserIds"]
+               "connectedAgentUserIds", "connectedAgentParticipantIds", "connectedAgentTimes",
+               "alertingAgentUserIds", "alertingAgentParticipantIds"]
 SET_INPUTS = ["conversationId", "participantId", "idleAlert", "idleMinutes", "idleSeq"]
 
 
@@ -365,14 +366,17 @@ def build(args):
                    outputs=[{"name": n, "value": f.ref(f"State.{n}")} for n in GET_OUTPUTS],
                    timeout=dict(timeout), paths=[])
 
+    # match our agent by user id, falling back to the participant id from the trigger event
     find_agent = f.action("UpdateVariableAction", "Find our agent", variables=[
         {"expression": f.expr("FindFirst(State.connectedAgentUserIds, Flow.userId)"),
+         "variable": f.ref("State.AgentIndex")},
+        {"expression": f.expr("If(State.AgentIndex >= 0, State.AgentIndex, FindFirst(State.connectedAgentParticipantIds, Flow.participantId))"),
          "variable": f.ref("State.AgentIndex")}])
 
     still_alerting_next = f.action("NextLoopAction", "Still ringing - check again")
     gone_exit = f.action("ExitLoopAction", "Agent left the conversation")
     still_alerting = f.action("DecisionAction", "Still alerting?",
-                              expression=f.expr("FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0"),
+                              expression=f.expr("FindFirst(State.alertingAgentUserIds, Flow.userId) >= 0 or FindFirst(State.alertingAgentParticipantIds, Flow.participantId) >= 0"),
                               paths=[path("__YES__", "Yes", still_alerting_next), path("__NO__", "No", gone_exit)])
 
     compute = f.action("UpdateVariableAction", "Compute idle time", variables=[
